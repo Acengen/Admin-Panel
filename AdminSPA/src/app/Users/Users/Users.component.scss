@@ -1,0 +1,57 @@
+.navbar-my {
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    a {
+        margin: 10px;
+        font-size: 20px;
+    }
+
+    .isActive {
+        background-color: rgb(13, 113, 226);
+        padding: 10px;
+        border-radius: 5px;
+        color: white;
+    }
+}
+
+.active {
+    color: rgb(82, 82, 82);
+    font-weight: bold;
+}
+
+.users {
+    h3 {
+        margin: 20px;
+    }
+}
+
+.user-cards {
+    margin: 10px;
+}
+
+.user-list {
+    margin: 10px;
+    padding: 20px;
+}
+
+form {
+    max-width: 200px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+
+    select {
+        padding:5px 10px;
+        border-radius: 5px;
+        border-color: rgb(209, 209, 209);
+    }
+    button {
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-left: 10px;
+        margin-bottom: 5px;
+        border: none !important;
+    }
+}

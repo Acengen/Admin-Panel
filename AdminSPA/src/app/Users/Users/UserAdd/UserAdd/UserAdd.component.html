@@ -1,0 +1,16 @@
+<div class="overlay">
+  <form #f="ngForm" (ngSubmit)="AddUser(f)">
+    <i [routerLink]="['/users']" routerLinkActive="router-link-active"  class="fa fa-close text-light"></i>
+    <p>Create customer</p>
+    <input class="form-control" type="text" name="name" ngModel placeholder="Name">
+    <input class="form-control" type="text" name="street" ngModel placeholder="Street">
+    <input class="form-control" type="text" name="city" ngModel placeholder="City">
+    <select class="form-control" name="gender" [(ngModel)]="defaultGender">
+      <option *ngFor="let g of gender" [value]="g">{{g}}</option>
+    </select>
+    <select class="form-control" name="products" [(ngModel)]="defaultProduct">
+      <option *ngFor="let prod of products" [value]="prod.name">{{prod.name}} ---- ${{prod.price}}</option>
+    </select>
+    <button class="btn btn-primary" type="submit">Add</button>
+  </form>  
+</div>

@@ -1,0 +1,27 @@
+.card {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.card-header {
+    position: relative;
+
+    .userdetail {
+        position: absolute;
+        color: white;
+        right: 0;
+        top: 0;
+        padding: 5px;
+    }
+}
+
+.card-bottom {
+    position: relative;
+    i {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        font-size: 20px;
+        padding: 5px;
+        cursor: pointer;
+    }
+}

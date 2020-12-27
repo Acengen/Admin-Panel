@@ -1,0 +1,65 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+namespace AdminAPI.Migrations
+{
+    public partial class AddPropsinUserTable : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Orders_Users_UserId",
+                table: "Orders");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Orders_UserId",
+                table: "Orders");
+
+            migrationBuilder.DropColumn(
+                name: "UserId",
+                table: "Orders");
+
+            migrationBuilder.AddColumn<string>(
+                name: "ProductName",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: true);
+
+            migrationBuilder.AddColumn<int>(
+                name: "ProductPrice",
+                table: "Users",
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropColumn(
+                name: "ProductName",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "ProductPrice",
+                table: "Users");
+
+            migrationBuilder.AddColumn<int>(
+                name: "UserId",
+                table: "Orders",
+                type: "int",
+                nullable: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Orders_UserId",
+                table: "Orders",
+                column: "UserId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Orders_Users_UserId",
+                table: "Orders",
+                column: "UserId",
+                principalTable: "Users",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
+        }
+    }
+}

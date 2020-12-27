@@ -1,0 +1,75 @@
+.navbar-my {
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    a {
+        margin: 10px;
+        font-size: 20px;
+    }
+
+    .isActive {
+        background-color: rgb(13, 113, 226);
+        padding: 10px;
+        border-radius: 5px;
+        color: white;
+    }
+
+   
+}
+h3 {
+    margin: 20px;
+}
+
+.user-detail {
+    display: flex;
+    justify-content: space-between;
+    max-width: 400px;
+    margin-top:30px;
+
+    img {
+        width: 200px;
+    }
+    p,span {
+        font-weight: bold;
+    }
+
+    .text-detail {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+}
+
+.user-orders {
+    padding: 20px;
+    .card {
+        .card-body {
+            display: flex;
+            justify-content: space-between;
+
+            p {
+                color:grey;
+                font-weight: bold;
+            }
+        }
+        border-top: 0 !important;
+        border-left: 0 !important;
+        border-right: 0 !important;
+        border-bottom: 5px solid grey !important;
+    }
+}
+
+
+.productTotal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 20px;
+
+    p {
+        color:grey;
+        font-weight: bold;
+    }
+}

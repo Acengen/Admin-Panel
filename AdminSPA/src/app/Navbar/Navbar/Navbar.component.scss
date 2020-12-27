@@ -1,0 +1,33 @@
+ul {
+    margin-left: 20px;
+    li a {
+        color: white;
+    }
+}
+
+.active {
+    background-color: white;
+    border-radius: 2px;
+}
+
+.navbar {
+    padding: 10px;
+    position: relative;
+    img {
+        width: 100px;
+        position: absolute;
+        left: 50%;
+        
+        transform: translate(-50%,10px);
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .navbar {
+        img {
+            
+            left: unset;
+            right: 0;
+        }
+    }
+}

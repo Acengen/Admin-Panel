@@ -1,0 +1,8 @@
+<td class="text-primary">{{user.name}}</td>
+<td>{{user.street}}</td>
+<td>{{user.gender}}</td>
+<td>
+  <button [routerLink]="[user.id,'edit']" routerLinkActive="router-link-active"  class="btn btn-success">Edit</button>
+  <button (click)="deleteUser(user.id,index)" class="btn btn-danger">Delete</button>
+</td>
+
