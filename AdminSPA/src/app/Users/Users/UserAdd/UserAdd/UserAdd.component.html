@@ -1,5 +1,6 @@
 <div class="overlay">
   <form #f="ngForm" (ngSubmit)="AddUser(f)">
+    <p class="text-light bg-success p-3" *ngIf="succefullResponMsg">{{succefullResponMsg}}</p>
     <i [routerLink]="['/users']" routerLinkActive="router-link-active"  class="fa fa-close text-light"></i>
     <p>Create customer</p>
     <input class="form-control" type="text" name="name" ngModel placeholder="Name">

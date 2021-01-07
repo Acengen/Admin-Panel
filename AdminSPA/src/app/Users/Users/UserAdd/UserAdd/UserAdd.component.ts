@@ -3,6 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Product } from 'src/app/Interfaces/Product';
 import { UserServiceService } from 'src/app/Service/UserService.service';
+import { Store } from '@ngrx/store';
+import * as fromReducer from '../../../store/userReducer.reducer';
+import * as fromActions from '../../../store/userActions.actions';
+
+import { map } from 'rxjs/operators';
+
+
 
 @Component({
   selector: 'app-UserAdd',
@@ -15,7 +22,8 @@ export class UserAddComponent implements OnInit {
   gender:string[] = ['male','female'];
   defaultProduct:string = "Razor Shave";
   defaultGender:string = "male";
-  constructor(private service:UserServiceService) { }
+  succefullResponMsg:string;
+  constructor(private service:UserServiceService,private store:Store<fromReducer.AppState>) { }
 
   ngOnInit() {
     this.service.getProducts().subscribe(
@@ -26,8 +34,13 @@ export class UserAddComponent implements OnInit {
   }
 
   AddUser(f:NgForm){
-    this.service.addUser(f.value,f.value.products);
-    
+    this.service.addUser(f.value,f.value.products).subscribe(res => {
+      this.succefullResponMsg = "User Added";
+      setTimeout(() => {
+        this.succefullResponMsg = '';
+      },1000)
+    })
+   
   }
 
 }

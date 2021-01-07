@@ -3,14 +3,19 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import {map, tap } from "rxjs/operators";
 import { Product } from '../Interfaces/Product';
-import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import * as fromReducer from '../Users/store/userReducer.reducer';
+import * as fromActions from '../Users/store/userActions.actions';
 
-@Injectable({providedIn:'root'})
+
+
+@Injectable()
 export class UserServiceService {
 
 users:User[] = [];
 products:Product[] = [];
+
 
 user:User;
 
@@ -19,17 +24,20 @@ userEmitter = new EventEmitter<User>();
 
 baseUrl = "http://localhost:5000/api";
 
-constructor(private http:HttpClient,private router:Router) { }
+constructor(private http:HttpClient,private router:Router,private store:Store<fromReducer.AppState>) { }
 
-
+    
     getUserHttp(userparams?) {
         let params = new HttpParams();
         if(userparams != null) {
             params = params.append("gender", userparams.gender)
         }
-       return this.http.get<User[]>(this.baseUrl + "/user", {params:params}).pipe(tap(res => {
-            this.users = res;
-        }))
+       return this.http.get<User[]>(this.baseUrl + "/user", {params:params}).pipe(
+           tap(res => {
+               this.store.dispatch(new fromActions.GetUsers(res))
+           })
+       );
+
     }
 
     getUser(id:number) {
@@ -42,24 +50,25 @@ constructor(private http:HttpClient,private router:Router) { }
          }))
     }
 
-    addUser(user:User,productName) {
-        this.http.post<any>(this.baseUrl + "/user/add/" + productName,user).subscribe(res => {
-            this.users.push(res);
-            this.router.navigate(["/users"])
-        });
+    addUser(user:User,productName:string) {
+       return this.http.post<any>(this.baseUrl + "/user/add/" + productName,user).pipe(tap(res => {
+        this.store.dispatch(new fromActions.AddUser(res))
+       }))
     }
 
     updateUser(id:number,user:User){
-        this.http.put<User>("http://localhost:5000/api/user/edit/" + id, user).subscribe(res => {
-            let itemIndex = this.users.findIndex(item => item.id == res.id);
-            this.users[itemIndex] = res;
-        });
+       return this.http.put<User>("http://localhost:5000/api/user/edit/" + id, user).pipe(tap(res => {
+            //let itemIndex = this.users.findIndex(item => item.id == res.id);
+            // this.users[itemIndex] = res;
+            this.store.dispatch(new fromActions.UpdateUser({index:res.id,user:res}))
+
+        }));
     }
 
     deleteUser(id:number,index:number) {
-       return this.http.delete<User>("http://localhost:5000/api/user/" + id).subscribe(res => {
-           this.users.splice(index,1);
-       })
+       return this.http.delete<User>("http://localhost:5000/api/user/" + id).pipe(tap(res => {
+           this.store.dispatch(new fromActions.DeleteUser(index))
+       }))
     }
 
 }

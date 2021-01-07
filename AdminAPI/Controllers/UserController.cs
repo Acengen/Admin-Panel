@@ -28,13 +28,14 @@ namespace AdminAPI.Controllers
         }
 
         [HttpPost("add/{productName}")]
-        public async Task<IActionResult> AddUser(UserDto userdto, string productName)
+        public async Task<IActionResult> AddUser(UserDto userdto,string productName)
         {
             var userToAdd = _mapper.Map<User>(userdto);
             
-            var productToBuy = await _context.Orders.FirstOrDefaultAsync(p => p.Name == productName);
-            userToAdd.ProductName = productToBuy.Name;
-            userToAdd.ProductPrice = productToBuy.Price;
+            var productToAdd = await _context.Orders.FirstOrDefaultAsync(p => p.Name == productName);
+
+            userToAdd.ProductName = productToAdd.Name;
+            userToAdd.ProductPrice = productToAdd.Price;
 
             await _context.Users.AddAsync(userToAdd);
 

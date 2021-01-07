@@ -1,5 +1,6 @@
 <div class="overlay">
   <form #f="ngForm" (ngSubmit)="UpdateUser(f)">
+    <p class="text-light bg-danger p-3" *ngIf="errorMsg">{{errorMsg}}</p>
     <i [routerLink]="['/users']" routerLinkActive="router-link-active"  class="fa fa-close text-light"></i>
     <p>Update customer</p>
     <input class="form-control" type="text" name="name" [(ngModel)]="user.name">
