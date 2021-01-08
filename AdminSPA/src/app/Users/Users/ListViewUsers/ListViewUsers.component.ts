@@ -3,8 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/Interfaces/User';
 import { Store } from '@ngrx/store';
 
-import * as fromReducer from '../../store/userReducer.reducer'
-import { map } from 'rxjs/operators';
+import * as fromRoot from '../../../app.reducer'
 
 @Component({
   selector: '[app-ListViewUsers]',
@@ -14,7 +13,7 @@ import { map } from 'rxjs/operators';
 export class ListViewUsersComponent implements OnInit {
   @Input() user:User;
   @Input() index:number;
-  constructor(private service:UserServiceService,private store:Store<fromReducer.AppState>) { }
+  constructor(private service:UserServiceService,private store:Store<fromRoot.AppState>) { }
 
   ngOnInit() {
        

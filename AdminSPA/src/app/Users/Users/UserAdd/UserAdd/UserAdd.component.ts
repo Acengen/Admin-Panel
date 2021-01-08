@@ -4,10 +4,9 @@ import { NgForm } from '@angular/forms';
 import { Product } from 'src/app/Interfaces/Product';
 import { UserServiceService } from 'src/app/Service/UserService.service';
 import { Store } from '@ngrx/store';
-import * as fromReducer from '../../../store/userReducer.reducer';
+import * as fromRoot from '../../../../app.reducer';
 import * as fromActions from '../../../store/userActions.actions';
 
-import { map } from 'rxjs/operators';
 
 
 
@@ -23,7 +22,7 @@ export class UserAddComponent implements OnInit {
   defaultProduct:string = "Razor Shave";
   defaultGender:string = "male";
   succefullResponMsg:string;
-  constructor(private service:UserServiceService,private store:Store<fromReducer.AppState>) { }
+  constructor(private service:UserServiceService,private store:Store<fromRoot.AppState>) { }
 
   ngOnInit() {
     this.service.getProducts().subscribe(

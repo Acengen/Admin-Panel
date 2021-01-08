@@ -5,7 +5,7 @@ import { Product } from 'src/app/Interfaces/Product';
 import { Subscription, Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import * as fromReducer from '../store/userReducer.reducer';
+import * as fromRoot from '../../app.reducer';
 import { map } from 'rxjs/operators';
 import * as fromActions from '../store/userActions.actions';
 
@@ -15,40 +15,29 @@ import * as fromActions from '../store/userActions.actions';
   templateUrl: './Users.component.html',
   styleUrls: ['./Users.component.scss']
 })
-export class UsersComponent implements OnInit, OnDestroy {
+export class UsersComponent implements OnInit,OnDestroy {
   users:User[];
   products:Product[] = [];
   listView = false;
   genders = [{name:"male"},{name:"female"}];
   defaultgender = "male";
   usersSub:Subscription;
-  constructor(private service:UserServiceService,private store:Store<fromReducer.AppState>) { }
+  constructor(private service:UserServiceService,private store:Store<fromRoot.AppState>) { }
 
   ngOnInit() {
-    this.service.getUserHttp().subscribe(
-      res => {
-       this.usersSub = this.store.select('userList').pipe(map(stateData => stateData.user)).subscribe(user => {
-          this.users = user
-        })
-      }
-    )
-   
-   
+ this.usersSub = this.store.select('userList').pipe(map(resState=> resState.user)).subscribe(users => this.users = users)
+    this.store.dispatch(new fromActions.GetUsersStart())
   }
 
  
   loadUsersByGender(f:NgForm) {
-    this.service.getUserHttp(f.value).subscribe(
-      res => {
-        this.store.dispatch(new fromActions.GetUsers(res))
-      }
-    )
+    this.store.dispatch(new fromActions.GetUsersGender(f.value))
   }
   
 
+ 
   ngOnDestroy() {
     this.usersSub.unsubscribe()
   }
-  
 
 }

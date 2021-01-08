@@ -1,24 +1,27 @@
 
+
 import { User } from "../../Interfaces/User";
 import * as fromActions from '../../Users/store/userActions.actions';
 
 export interface State {
-    user:User[]
+    user:User[],
 }
 
-export interface AppState {
-    userList: State
-}
 
 const initialState:State = {
-    user: []
+    user: [],
 }
 
 export function UserReducer(state=initialState, action:fromActions.UserActionsTypes){
     switch(action.type) {
+        case fromActions.GET_USERS_START:
+            return {
+                ...state
+            }
         case fromActions.GET_USERS:
             return {
-                user: [...action.payload]
+                ...state,
+                user: action.payload
             }
         case fromActions.ADD_USER:
             return {
@@ -31,18 +34,32 @@ export function UserReducer(state=initialState, action:fromActions.UserActionsTy
                    return index !== action.payload
                })
            }
-        case fromActions.UPDATE_USER:
-           let itemIndex = state.user.findIndex(item => item.id == action.payload.index);
-           let usersarray = [...state.user];
-           let userUpdate = {
-               ...action.payload.user
+        case fromActions.UPDATE_USER_START:
+            let itemIndex = state.user.findIndex(item => item.id == action.payload.id);
+            let usersarray = [...state.user];
+            let userUpdate = {
+                ...action.payload
+            }
+            usersarray[itemIndex] = userUpdate
+           return {
+               ...state,
+               user:usersarray
            }
-           usersarray[itemIndex] = userUpdate
+        case fromActions.UPDATE_USER_SUCCESS:
+             return {
+                 ...state
+             }
+        case fromActions.GET_USERS_GENDER:
+            let newState = state.user.filter(v => {
+                return v.gender === action.payload.gender
+            })
             return {
-                ...state,
-                user: usersarray
+               ...state,
+               user:newState         
             }
         default:
             return state
     }
 }
+
+export const getUsers = (state:State) => state.user;

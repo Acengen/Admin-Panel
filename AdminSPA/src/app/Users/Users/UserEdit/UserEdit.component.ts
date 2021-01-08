@@ -4,9 +4,9 @@ import { UserServiceService } from 'src/app/Service/UserService.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, Params } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import * as fromReducer from '../../store/userReducer.reducer'
-import { map } from 'rxjs/operators';
-import { state } from '@angular/animations';
+import * as fromRoot from '../../../app.reducer'
+import * as fromActions from '../../store/userActions.actions'
+
 
 @Component({
   selector: 'app-UserEdit',
@@ -19,11 +19,12 @@ export class UserEditComponent implements OnInit {
   errorMsg:string;
   gender:string[] = ['male','female'];
   defaultGender:string = "male";
-  constructor(private route:ActivatedRoute,private service: UserServiceService,private store:Store<fromReducer.AppState>) { }
+  constructor(private route:ActivatedRoute,private service: UserServiceService,private store:Store<fromRoot.AppState>) { }
 
   ngOnInit() {
     this.route.data.subscribe(
       (data:Data) => {
+        console.log(data)
          this.user = data['data'];
          this.userId = data['data'].id;
       }
@@ -31,12 +32,7 @@ export class UserEditComponent implements OnInit {
   }
 
   UpdateUser(f:NgForm) {
-    this.service.updateUser(this.userId, f.value).subscribe(
-      res => {},
-      error => {
-        this.errorMsg = error.error.errors.Name[0];
-      }
-    )
+    this.store.dispatch(new fromActions.UpdateUserStart({id:this.userId,name:f.value.name,street:f.value.street,city:f.value.city,gender:f.value.gender}))
   }
 
 }
