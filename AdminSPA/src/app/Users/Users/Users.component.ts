@@ -25,8 +25,10 @@ export class UsersComponent implements OnInit,OnDestroy {
   constructor(private service:UserServiceService,private store:Store<fromRoot.AppState>) { }
 
   ngOnInit() {
- this.usersSub = this.store.select('userList').pipe(map(resState=> resState.user)).subscribe(users => this.users = users)
     this.store.dispatch(new fromActions.GetUsersStart())
+  this.usersSub = this.store.select('userList').pipe(map(resState=> resState.user)).subscribe(users => {
+    this.users = users
+  })
   }
 
  

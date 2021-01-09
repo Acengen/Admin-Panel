@@ -48,7 +48,7 @@ namespace AdminAPI.Controllers
         public async Task<IActionResult> GetUsers([FromQuery] UserParams userParams)
         {
             var users = await _repo.GetUsers(userParams);
-            var usersToRetrun = _mapper.Map<IEnumerable<UserToCreateDto>>(users);
+            var usersToRetrun = _mapper.Map<IEnumerable<UserDto>>(users);
 
             return Ok(usersToRetrun);
         }

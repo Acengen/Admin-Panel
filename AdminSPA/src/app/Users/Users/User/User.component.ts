@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/Interfaces/User';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../../app.reducer'
+import * as fromActions from '../../store/userActions.actions'
 import { map } from 'rxjs/operators';
 
 
@@ -25,14 +26,8 @@ export class UserComponent implements OnInit {
     }
   }
 
-  deleteReq(id,index) {
-      this.service.deleteUser(id,index).subscribe(
-        res => {
-          this.store.select('userList').pipe(
-            map(res => res.user)
-          ).subscribe()
-        }
-      );
+  deleteReq(index,id) {
+      this.store.dispatch(new fromActions.DeleteUser({index:index,id:id}))
   }
 
 }

@@ -27,13 +27,13 @@ baseUrl = "http://localhost:5000/api";
 constructor(private http:HttpClient,private router:Router,private store:Store<fromRoot.AppState>) { }
 
     
-    getUserHttp(userParams?) { 
-      let params = new HttpParams();
-      if(userParams != null) {
-          params = params.append('gender', userParams.gender)
-      }
-       return this.http.get<User[]>(this.baseUrl + "/user", {params})
-    }
+    // getUserHttp(userParams?) { 
+    //   let params = new HttpParams();
+    //   if(userParams != null) {
+    //       params = params.append('gender', userParams.gender)
+    //   }
+    //    return this.http.get<User[]>(this.baseUrl + "/user", {params})
+    // }
 
     getUser(id:number) {
         return this.http.get<User>("http://localhost:5000/api/user/" + id);
@@ -45,26 +45,10 @@ constructor(private http:HttpClient,private router:Router,private store:Store<fr
          }))
     }
 
-    addUser(user:User,productName:string) {
-       return this.http.post<any>(this.baseUrl + "/user/add/" + productName,user).pipe(tap(res => {
-        this.store.dispatch(new fromActions.AddUser(res))
-       }))
-    }
-
-    updateUser(id:number,user:User){
-       return this.http.put<User>("http://localhost:5000/api/user/edit/" + id, user)
-    //    .pipe(tap(res => {
-    //         //let itemIndex = this.users.findIndex(item => item.id == res.id);
-    //         // this.users[itemIndex] = res;
-    //         //this.store.dispatch(new fromActions.UpdateUser({index:res.id,user:res}))
-
-    //     }));
-    }
-
-    deleteUser(id:number,index:number) {
-       return this.http.delete<User>("http://localhost:5000/api/user/" + id).pipe(tap(res => {
-           this.store.dispatch(new fromActions.DeleteUser(index))
-       }))
-    }
+    // addUser(user:User,productName:string) {
+    //    return this.http.post<any>(this.baseUrl + "/user/add/" + productName,user).pipe(tap(res => {
+    //     this.store.dispatch(new fromActions.AddUser(res))
+    //    }))
+    // }
 
 }

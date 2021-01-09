@@ -33,13 +33,11 @@ export class UserAddComponent implements OnInit {
   }
 
   AddUser(f:NgForm){
-    this.service.addUser(f.value,f.value.products).subscribe(res => {
-      this.succefullResponMsg = "User Added";
-      setTimeout(() => {
-        this.succefullResponMsg = '';
-      },1000)
-    })
+    this.store.dispatch(new fromActions.AddUser({productName:f.value.products,user:f.value}))
    
   }
 
 }
+// setTimeout(() => {
+//   this.succefullResponMsg = '';
+// },1000)

@@ -31,7 +31,6 @@ export const approute: Routes = [
       {
         path: ':id/edit',
         component: UserEditComponent,
-        resolve: { data: UserResolverServiceService },
       },
       { path: 'add', component: UserAddComponent },
     ],

@@ -4,6 +4,7 @@ import { User } from 'src/app/Interfaces/User';
 import { Store } from '@ngrx/store';
 
 import * as fromRoot from '../../../app.reducer'
+import * as fromActions from '../../store/userActions.actions'
 
 @Component({
   selector: '[app-ListViewUsers]',
@@ -19,8 +20,8 @@ export class ListViewUsersComponent implements OnInit {
        
   }
 
-  deleteUser(id,index) {
-      this.service.deleteUser(id,index).subscribe();
+  deleteUser(index,id) {
+      this.store.dispatch(new fromActions.DeleteUser({index,id}))
   }
 
 }

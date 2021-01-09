@@ -12,8 +12,7 @@ export class UserEffects {
     usersGet = this.actions$.pipe(
         ofType(fromActions.GET_USERS_START),
         switchMap(() => {
-            let params = new HttpParams();
-            return this.http.get<any>("http://localhost:5000/api/user", {params:params}).pipe(
+            return this.http.get<User[]>("http://localhost:5000/api/user").pipe(
                 map(users => {
                     return new fromActions.GetUsers(users)
                 })
@@ -24,14 +23,9 @@ export class UserEffects {
     updateUser = this.actions$.pipe(
         ofType(fromActions.UPDATE_USER_START),
         switchMap((resdata:fromActions.UpdateUserStart) => {
-            return this.http.put<User>("http://localhost:5000/api/user/edit/" + resdata.payload.id, {
-                name:resdata.payload.name,
-                street:resdata.payload.street,
-                city:resdata.payload.city,
-                gender:resdata.payload.gender
-            }).pipe(
-                map(users => {
-                    return new fromActions.UpdateUserSuccess({user:users})
+            return this.http.put<User>("http://localhost:5000/api/user/edit/" + resdata.payload.id,resdata.payload.user).pipe(
+                map((users:any) => {
+                    return new fromActions.UpdateUserSuccess(users)
                 })
             )
         })
@@ -47,6 +41,30 @@ export class UserEffects {
             return this.http.get<any>("http://localhost:5000/api/user", {params:params}).pipe(
                 map(users => {
                     return new fromActions.GetUsers(users)
+                })
+            )
+        })
+    )
+
+    @Effect()
+    userDelete = this.actions$.pipe(
+        ofType(fromActions.DELETE_USER),
+        switchMap((resData:fromActions.DeleteUser) => {
+            return this.http.delete<User>("http://localhost:5000/api/user/" + resData.payload.id).pipe(
+                map(users => {
+                    return new fromActions.DeleteUserSuccess(users)
+                })
+            )
+        })
+    )
+
+    @Effect()
+    addUser = this.actions$.pipe(
+        ofType(fromActions.ADD_USER),
+        switchMap((resData:fromActions.AddUser) => {
+            return this.http.post<any>("http://localhost:5000/api/user/add/" + resData.payload.productName,resData.payload.user).pipe(
+                map(res => {
+                    return new fromActions.AddUserSuccess(res)
                 })
             )
         })
