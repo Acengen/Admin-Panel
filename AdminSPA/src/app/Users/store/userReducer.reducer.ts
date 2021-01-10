@@ -1,4 +1,3 @@
-import { act } from '@ngrx/effects';
 import { User } from '../../Interfaces/User';
 import * as fromActions from '../../Users/store/userActions.actions';
 
@@ -25,14 +24,13 @@ export function UserReducer(
         user: action.payload,
       };
     case fromActions.ADD_USER:
-        
       return {
-        ...state
+        ...state,
       };
     case fromActions.ADD_USER_SUCCESS:
       return {
         ...state,
-        user:[...state.user,action.payload]
+        user: [...state.user, action.payload],
       };
     case fromActions.DELETE_USER:
       return {
@@ -46,9 +44,8 @@ export function UserReducer(
         ...state,
       };
     case fromActions.UPDATE_USER_START:
-      
       return {
-        ...state
+        ...state,
       };
     case fromActions.UPDATE_USER_SUCCESS:
       let itemIndex = state.user.findIndex(
@@ -62,7 +59,7 @@ export function UserReducer(
 
       return {
         ...state,
-        user:usersarray
+        user: usersarray,
       };
     case fromActions.GET_USERS_GENDER:
       let newState = state.user.filter((v) => {

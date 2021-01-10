@@ -10,7 +10,6 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './About/About.component';
-import { UserResolverServiceService } from './Reslovers/UserResolverService.service';
 import { UserAddComponent } from './Users/Users/UserAdd/UserAdd/UserAdd.component';
 import { UserDetailComponent } from './Users/Users/UserDetail/UserDetail.component';
 import { UserEditComponent } from './Users/Users/UserEdit/UserEdit.component';
