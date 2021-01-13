@@ -39,7 +39,20 @@ h3 {
         flex-direction: column;
         align-items: flex-end;
     }
+    .userConfig {
+        i {
+            margin: 5px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    }
 
+}
+.messageing {
+    form {
+        max-width: 400px;
+        margin: 10px;
+    }
 }
 
 .user-orders {

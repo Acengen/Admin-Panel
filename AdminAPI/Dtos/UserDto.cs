@@ -11,7 +11,8 @@ namespace AdminAPI.Dtos
         public string City { get; set; }
         public string Gender { get; set; }
         public string ProductName { get; set; }
-        public int ProductPrice { get; set; }   
-        
+        public int ProductPrice { get; set; }
+
+
     }
 }

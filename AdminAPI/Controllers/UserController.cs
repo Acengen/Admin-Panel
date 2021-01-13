@@ -49,7 +49,6 @@ namespace AdminAPI.Controllers
         {
             var users = await _repo.GetUsers(userParams);
             var usersToRetrun = _mapper.Map<IEnumerable<UserDto>>(users);
-
             return Ok(usersToRetrun);
         }
 
@@ -92,6 +91,18 @@ namespace AdminAPI.Controllers
             return NoContent();
         }
 
+        [HttpPost("send/{userId}")]
+        public async Task<IActionResult> SendMsg(int userId,Message message){
+            var userToSend = await _repo.GetUser(userId);
+           
+            message.UserId = userToSend.Id;
+
+            await _context.Messages.AddAsync(message);
+
+            await _context.SaveChangesAsync();
+
+            return Ok(message);
+        }
         
     }
 }

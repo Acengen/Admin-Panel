@@ -3,14 +3,24 @@
   <a [ngClass]="{'isActive': !listView}" (click)="listView = false">Customer Detail</a>
   <a [ngClass]="{'isActive': listView}" (click)="listView=true"><i class="fa fa-align-left"></i> Customer Order</a>
 </div>
-<div *ngIf="!listView" class="user-detail">
+<div *ngIf="!listView || user" class="user-detail">
     <img src="{{iconsimg}}" alt="">
     <div class="text-detail">
       <p>{{user.name}}</p>
       <div class="user-city">
         <span>{{user.street}}, {{user.city}}</span>
       </div>
+     <div class="userConfig">
+      <i (click)="acitivateMessage()" class="fa fa-envelope-o"></i>
+      <i (click)="deleteUser()" class="fa fa-times-circle" style="color: red;"></i>
+     </div>
     </div>
+</div>
+<div *ngIf="messageActive" class="messageing">
+  <form (ngSubmit)="SendMsg(form)" #form="ngForm">
+    <textarea class="form-control" name="text" cols="10" rows="10" placeholder="send message..." ngModel></textarea>
+    <button class="btn btn-sm btn-primary">send</button>
+  </form>
 </div>
 <div *ngIf="listView" class="user-orders">
   <h3>Orders from {{user.name}}</h3>

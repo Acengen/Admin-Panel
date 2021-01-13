@@ -16,6 +16,7 @@ namespace AdminAPI.Helper
 
              CreateMap<UserUpdateDto,User>();
               CreateMap<User,UserUpdateDto>();
+        
 
         }
     }

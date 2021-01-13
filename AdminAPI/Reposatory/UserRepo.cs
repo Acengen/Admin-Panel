@@ -18,6 +18,10 @@ namespace AdminAPI.Reposatory
 
         }
 
+        
+
+      
+
         public async Task<IEnumerable<Order>> GetOrders()
         {
             var orders = await _context.Orders.ToListAsync();
@@ -43,5 +47,7 @@ namespace AdminAPI.Reposatory
 
             return users;
         }
+
+        
     }
 }

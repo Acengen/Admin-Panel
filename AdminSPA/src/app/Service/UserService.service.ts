@@ -24,4 +24,8 @@ export class UserServiceService {
       })
     );
   }
+
+  sendMsg(userId:number,message) {
+    return this.http.post("http://localhost:5000/api/user/send/" + userId,message)
+  }
 }
