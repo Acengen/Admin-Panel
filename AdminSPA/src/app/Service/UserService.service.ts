@@ -5,6 +5,7 @@ import { Product } from '../Interfaces/Product';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../app.reducer';
+import { Message } from '../Interfaces/Message';
 
 @Injectable()
 export class UserServiceService {
@@ -26,6 +27,6 @@ export class UserServiceService {
   }
 
   sendMsg(userId:number,message) {
-    return this.http.post("http://localhost:5000/api/user/send/" + userId,message)
+    return this.http.post<Message>("http://localhost:5000/api/user/send/" + userId,message)
   }
 }

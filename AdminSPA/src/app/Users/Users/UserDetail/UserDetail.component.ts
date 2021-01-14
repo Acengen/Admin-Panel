@@ -20,11 +20,13 @@ export class UserDetailComponent implements OnInit {
   iconsimg = "";
   userId:number;
   messageActive:boolean;
+  successSendMessage:boolean;
   userIndex;
 
   constructor(private router:ActivatedRoute, private service:UserServiceService,private store:Store<fromRoot.AppState>,private route:Router) { }
 
   ngOnInit() {
+   
     this.router.params.subscribe(
       (param:Params) => {
         this.userId = +param['id']
@@ -42,7 +44,17 @@ export class UserDetailComponent implements OnInit {
           this.iconsimg = "../../../../assets/windows-user-icon-5.jpg";
         }
       }
-    )
+    );
+    this.store.select(fromRoot.getIsSuccess).subscribe(
+      isSuccess => {
+        this.successSendMessage = isSuccess;
+        if(this.successSendMessage) {
+          setTimeout(() => {
+            this.successSendMessage = false
+          },1000)
+        }
+      }
+    );
     }
 
     acitivateMessage() {
@@ -50,15 +62,12 @@ export class UserDetailComponent implements OnInit {
     }
 
     SendMsg(f:NgForm) {
-      this.service.sendMsg(this.userId,f.value).subscribe(msg => console.log(msg))
+      this.store.dispatch(new fromActions.AddMsgStart({userId:this.userId,msg:f.value}))
     }
 
     deleteUser() {
-       if(confirm("Are you sure you wont to ban this person")){
-        this.store.dispatch(new fromActions.DeleteUser({index:this.userIndex,id:this.userId}));
-      
-        this.route.navigate(["/users"])
-       }
-         
+        this.store.dispatch(new fromActions.DeleteSingleUser(this.userId));
+        this.user = null;
+        
     }
 }

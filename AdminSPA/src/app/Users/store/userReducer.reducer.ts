@@ -1,12 +1,17 @@
+import { Message } from 'src/app/Interfaces/Message';
 import { User } from '../../Interfaces/User';
 import * as fromActions from '../../Users/store/userActions.actions';
 
 export interface State {
   user: User[];
+  msg:Message[];
+  successMessage:boolean;
 }
 
 const initialState: State = {
   user: [],
+  msg: [],
+  successMessage:false
 };
 
 export function UserReducer(
@@ -32,13 +37,25 @@ export function UserReducer(
         ...state,
         user: [...state.user, action.payload],
       };
+    case fromActions.DELETE_SINGLE_USER:
+      let user = state.user.find(v => v.id === action.payload)
+      return {
+        ...state,
+        user: state.user.filter((v,index) => {
+          return v !== user
+        })
+      }
+    case fromActions.DELETE_SINGLE_USER_SUCCESS:
+      return {
+        ...state
+      }
     case fromActions.DELETE_USER:
       return {
         ...state,
-        user: state.user.filter((v, index) => {
-          return index !== action.payload.index;
-        }),
-      };
+        user:state.user.filter((v,index) => {
+          return index !== action.payload.index
+        })
+      }
     case fromActions.DELETE_USER_SUCCESS:
       return {
         ...state,
@@ -69,9 +86,22 @@ export function UserReducer(
         ...state,
         user: newState,
       };
+    case fromActions.ADD_MSG_START:
+      return {
+        ...state,
+        successMessage:false
+      }
+    case fromActions.ADD_MSG_SUCCESS:
+     
+      return {
+        ...state,
+        msg:[...state.msg,action.payload],
+        successMessage:true
+      }
     default:
       return state;
   }
 }
 
 export const getUsers = (state: State) => state.user;
+export const getIsSuccess = (state:State) => state.successMessage;

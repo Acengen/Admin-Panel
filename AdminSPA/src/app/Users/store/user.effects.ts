@@ -1,8 +1,9 @@
+import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/Service/UserService.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { User } from 'src/app/Interfaces/User';
 import * as fromActions from './userActions.actions';
 
@@ -66,6 +67,28 @@ export class UserEffects {
         );
     })
   );
+  @Effect()
+  singleUserDelete = this.actions$.pipe(
+    ofType(fromActions.DELETE_SINGLE_USER),
+    switchMap((resData: fromActions.DeleteSingleUser) => {
+      return this.http
+        .delete<User>('http://localhost:5000/api/user/' + resData.payload)
+        .pipe(
+          map((users) => {
+            
+            return new fromActions.DeleteSingleUserSuccess(users);
+          })
+        );
+    })
+  );
+
+  @Effect({dispatch:false})
+  singleUserDeleted = this.actions$.pipe(
+    ofType(fromActions.DELETE_SINGLE_USER_SUCCESS),
+    tap(() => {
+        this.route.navigate(['/'])
+    })
+  )
 
   @Effect()
   addUser = this.actions$.pipe(
@@ -84,9 +107,23 @@ export class UserEffects {
     })
   );
 
+  @Effect()
+  addMsg = this.actions$.pipe(
+    ofType(fromActions.ADD_MSG_START),
+    switchMap((resData:fromActions.AddMsgStart) => {
+      return this.service.sendMsg(resData.payload.userId,resData.payload.msg).pipe(
+        map((res) => {
+          
+          return new fromActions.AddMsgSuccess(res)
+        })
+      )
+    })
+  )
+
   constructor(
     private actions$: Actions,
     private http: HttpClient,
-    private service: UserServiceService
+    private service: UserServiceService,
+    private route:Router
   ) {}
 }

@@ -16,6 +16,7 @@
      </div>
     </div>
 </div>
+<p class="msgSuccess" *ngIf="successSendMessage">Sending...</p>
 <div *ngIf="messageActive" class="messageing">
   <form (ngSubmit)="SendMsg(form)" #form="ngForm">
     <textarea class="form-control" name="text" cols="10" rows="10" placeholder="send message..." ngModel></textarea>
@@ -34,3 +35,4 @@
     <p>${{user.productPrice}}</p>
   </div>
 </div>
+

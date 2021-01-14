@@ -20,6 +20,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { UserEffects } from './Users/store/user.effects';
 import { appreducers } from './app.reducer';
+import { MessagesComponent } from './Messages/Messages.component';
 
 export const approute: Routes = [
   { path: '', redirectTo: '/users', pathMatch: 'full' },
@@ -39,9 +40,10 @@ export const approute: Routes = [
     component: UserDetailComponent
   },
   { path: 'about', component: AboutComponent },
+  {path:'messages', component:MessagesComponent}
 ];
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     NavbarComponent,
     AboutComponent,
@@ -51,7 +53,8 @@ export const approute: Routes = [
     UserAddComponent,
     UserDetailComponent,
     ListViewUsersComponent,
-  ],
+      MessagesComponent
+   ],
   imports: [
     BrowserModule,
     HttpClientModule,
