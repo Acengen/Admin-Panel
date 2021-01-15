@@ -103,6 +103,13 @@ namespace AdminAPI.Controllers
 
             return Ok(message);
         }
+
+        [HttpGet("messages")]
+        public async Task<IActionResult> GetMsgs() {
+            var msgFromRepo = await _repo.GetMessages();
+
+            return Ok(msgFromRepo);
+        }
         
     }
 }

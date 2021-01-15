@@ -6,6 +6,7 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { User } from 'src/app/Interfaces/User';
 import * as fromActions from './userActions.actions';
+import { Message } from 'src/app/Interfaces/Message';
 
 @Injectable()
 export class UserEffects {
@@ -106,6 +107,18 @@ export class UserEffects {
         );
     })
   );
+  
+  @Effect()
+  getMsg = this.actions$.pipe(
+    ofType(fromActions.GET_MSG_START),
+    switchMap(() => {
+        return this.http.get<Message[]>("http://localhost:5000/api/user/messages").pipe(
+          map((res) => {
+            return new fromActions.GetMsgSuccess(res)
+          })
+        )
+    })
+  )
 
   @Effect()
   addMsg = this.actions$.pipe(

@@ -18,8 +18,10 @@
 </div>
 <p class="msgSuccess" *ngIf="successSendMessage">Sending...</p>
 <div *ngIf="messageActive" class="messageing">
+  <p class="text-muted" style="font-size: 12px;margin-bottom: 0;margin-left: 10px;margin-top: 10px;">SEND USE A MESSAGE <i class="fa fa-hand-o-down"></i>
+  </p>
   <form (ngSubmit)="SendMsg(form)" #form="ngForm">
-    <textarea class="form-control" name="text" cols="10" rows="10" placeholder="send message..." ngModel></textarea>
+    <textarea class="form-control" name="text" cols="10" rows="5" placeholder="send message..." ngModel></textarea>
     <button class="btn btn-sm btn-primary">send</button>
   </form>
 </div>

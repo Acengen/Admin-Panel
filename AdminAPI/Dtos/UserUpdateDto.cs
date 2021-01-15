@@ -4,11 +4,16 @@ namespace AdminAPI.Dtos
 {
     public class UserUpdateDto
     {
-        // [Required]
-        // [StringLength(255,MinimumLength=2,ErrorMessage="'NAME' must have at least 2 chars")]
+        [Required]
         public string Name { get; set; }
+
+        [Required]
         public string Street { get; set; }
+
+        [Required]
         public string City { get; set; }
+
+        [Required]
         public string Gender { get; set; }
         
     }

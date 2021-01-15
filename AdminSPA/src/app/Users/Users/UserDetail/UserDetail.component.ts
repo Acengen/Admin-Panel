@@ -63,11 +63,14 @@ export class UserDetailComponent implements OnInit {
 
     SendMsg(f:NgForm) {
       this.store.dispatch(new fromActions.AddMsgStart({userId:this.userId,msg:f.value}))
+      f.reset();
+      this.messageActive = false;
     }
 
     deleteUser() {
+       if(confirm("You wont to delete a user?")){
         this.store.dispatch(new fromActions.DeleteSingleUser(this.userId));
         this.user = null;
-        
+       }
     }
 }

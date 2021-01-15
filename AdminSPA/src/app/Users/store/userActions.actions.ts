@@ -16,6 +16,8 @@ export const GET_USERS_GENDER = 'GET_USERS_GENDER';
 export const GET_USERS_GENDER_START = 'GET_USERS_GENDER_START';
 export const ADD_MSG_START = 'ADD_MSG_START';
 export const ADD_MSG_SUCCESS = 'ADD_MSG_SUCCESS';
+export const GET_MSG_START = 'GET_MSG_START';
+export const GET_MSG_SUCCESS = 'GET_MSG_SUCCESS';
 
 export class AddUser implements Action {
   readonly type = ADD_USER;
@@ -77,6 +79,15 @@ export class UpdateUserSuccess implements Action {
   constructor(public payload: User) {}
 }
 
+export class GetMsgStart implements Action {
+  readonly type = GET_MSG_START;
+}
+
+export class GetMsgSuccess implements Action {
+  readonly type = GET_MSG_SUCCESS;
+  constructor(public payload:Message[]) {}
+}
+
 export class AddMsgStart implements Action {
     readonly type = ADD_MSG_START;
 
@@ -100,5 +111,7 @@ export type UserActionsTypes =
   | UpdateUserStart
   | GetUsersGender
   | DeleteUserSuccess
+  | GetMsgStart
+  | GetMsgSuccess
   | AddMsgStart
   | AddMsgSuccess;

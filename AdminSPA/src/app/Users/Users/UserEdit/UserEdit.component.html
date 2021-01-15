@@ -3,12 +3,15 @@
     <p class="text-light bg-danger p-3" *ngIf="errorMsg">{{errorMsg}}</p>
     <i [routerLink]="['/users']" routerLinkActive="router-link-active"  class="fa fa-close text-light"></i>
     <p>Update customer</p>
-    <input class="form-control" type="text" name="name" [(ngModel)]="user.name">
-    <input class="form-control" type="text" name="street" [(ngModel)]="user.street">
-    <input class="form-control" type="text" name="city" [(ngModel)]="user.city">
+    <input class="form-control" type="text" #name="ngModel" name="name" [(ngModel)]="user.name" required>
+    <input class="form-control" type="text" #street="ngModel" name="street" [(ngModel)]="user.street" required>
+    <input class="form-control" type="text" #city="ngModel" name="city" [(ngModel)]="user.city" required>
     <select class="form-control" name="gender" [(ngModel)]="defaultGender">
       <option *ngFor="let g of gender" [value]="g">{{g}}</option>
     </select>
+    <p style="margin-bottom: 0;" class="text-warning" *ngIf="name.invalid && name.touched">Name is required</p>
+    <p style="margin-bottom: 0;" class="text-warning" *ngIf="street.invalid && street.touched">Street is required</p>
+    <p class="text-warning" *ngIf="city.invalid && city.touched">City is required</p>
     <button class="btn btn-primary">Edit</button>
 </form>
 </div>

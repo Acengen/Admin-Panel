@@ -18,9 +18,12 @@ namespace AdminAPI.Reposatory
 
         }
 
-        
+        public async Task<IEnumerable<Message>> GetMessages()
+        {
+            var msgs = await _context.Messages.ToListAsync();
 
-      
+            return msgs;
+        }
 
         public async Task<IEnumerable<Order>> GetOrders()
         {

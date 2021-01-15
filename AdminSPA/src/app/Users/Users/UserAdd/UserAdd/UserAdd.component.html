@@ -3,13 +3,16 @@
     <p class="text-light bg-success p-3" *ngIf="succefullResponMsg">{{succefullResponMsg}}</p>
     <i [routerLink]="['/users']" routerLinkActive="router-link-active"  class="fa fa-close text-light"></i>
     <p>Create customer</p>
-    <input class="form-control" type="text" name="name" ngModel placeholder="Name">
-    <input class="form-control" type="text" name="street" ngModel placeholder="Street">
-    <input class="form-control" type="text" name="city" ngModel placeholder="City">
+    <input class="form-control" type="text" #name="ngModel" name="name" ngModel placeholder="Name" required>
+    <p style="font-size: 11px;" class="text-warning" *ngIf="name.invalid && name.touched">Name is required</p>
+    <input class="form-control" type="text" #street="ngModel" name="street" ngModel placeholder="Street" required>
+    <p style="font-size: 11px;" class="text-warning" *ngIf="street.invalid && street.touched">Street is required</p>
+    <input class="form-control" type="text" #city="ngModel" name="city" ngModel placeholder="City" required>
+    <p style="font-size: 11px;" class="text-warning" *ngIf="city.invalid && city.touched">City is required</p>
     <select class="form-control" name="gender" [(ngModel)]="defaultGender">
       <option *ngFor="let g of gender" [value]="g">{{g}}</option>
     </select>
-    <select class="form-control" name="products" [(ngModel)]="defaultProduct">
+    <select class="form-control" name="productName" [(ngModel)]="defaultProduct">
       <option *ngFor="let prod of products" [value]="prod.name">{{prod.name}} ---- ${{prod.price}}</option>
     </select>
     <button class="btn btn-primary" type="submit">Add</button>

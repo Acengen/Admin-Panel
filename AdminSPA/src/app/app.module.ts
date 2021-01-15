@@ -1,3 +1,4 @@
+import { MessageItemComponent } from './Messages/MessageItem/MessageItem.component';
 import { UserServiceService } from 'src/app/Service/UserService.service';
 import { NavbarComponent } from './Navbar/Navbar/Navbar.component';
 
@@ -53,7 +54,8 @@ export const approute: Routes = [
     UserAddComponent,
     UserDetailComponent,
     ListViewUsersComponent,
-      MessagesComponent
+      MessagesComponent,
+      MessageItemComponent
    ],
   imports: [
     BrowserModule,

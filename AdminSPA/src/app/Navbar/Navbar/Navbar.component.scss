@@ -22,12 +22,20 @@ ul {
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 700px) {
     .navbar {
         img {
             
-            left: unset;
-            right: 0;
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .navbar {
+        img {
+           left: unset;
+           right: 0;
         }
     }
 }

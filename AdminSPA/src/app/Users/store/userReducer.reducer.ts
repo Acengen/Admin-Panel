@@ -86,6 +86,15 @@ export function UserReducer(
         ...state,
         user: newState,
       };
+    case fromActions.GET_MSG_START:
+      return {
+        ...state
+      }
+    case fromActions.GET_MSG_SUCCESS:
+      return {
+        ...state,
+        msg:action.payload
+      }
     case fromActions.ADD_MSG_START:
       return {
         ...state,

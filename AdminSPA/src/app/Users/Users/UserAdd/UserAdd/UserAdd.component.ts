@@ -33,7 +33,7 @@ export class UserAddComponent implements OnInit {
   }
 
   AddUser(f:NgForm){
-    this.store.dispatch(new fromActions.AddUser({productName:f.value.products,user:f.value}))
+    this.store.dispatch(new fromActions.AddUser({productName:f.value.productName,user:f.value}))
    
   }
 
