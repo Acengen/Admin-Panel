@@ -1,12 +1,44 @@
-ul {
-    margin-left: 20px;
-    li a {
-        color: white;
+
+.mynavbar {
+    height: 100%;
+    position: fixed;
+    width: 20%;
+    float: left;
+    left: 0;
+    z-index: -1;
+    padding-right: 10px 2px;
+    .adminimg {
+        padding: 150px 40px 20px 40px;
+        margin-bottom: 5px;
+        background-color: #eff6fc;
+        box-shadow: -1px 2px 2px rgb(211, 211, 211);
+        text-align: center;
+        img {
+            width: 80px;
+            border: 4px solid white;
+            background-color: rgb(243, 243, 243);
+            border-radius: 50%;
+        }
+        p {
+            text-align: center;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    }
+    
+    a {
+        display: block;
+        padding-top: 10px;
+        padding-left: 5px;
+        color: #5D8DCB;
+    }
+    .bottom-nav {
+        background-color: white;
     }
 }
 
 .active {
-    background-color: white;
+    text-decoration: underline;
     border-radius: 2px;
 }
 

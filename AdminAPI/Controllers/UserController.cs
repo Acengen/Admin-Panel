@@ -110,6 +110,21 @@ namespace AdminAPI.Controllers
 
             return Ok(msgFromRepo);
         }
+
+        [HttpGet("customerCounterAndMsg")]
+        public async Task<IActionResult> GetCustomerAndMsgCounter() {
+            var customers = await _context.Users.CountAsync();
+            var messages = await _context.Messages.CountAsync();
+            var orders = await _context.Orders.ToListAsync();
+
+            
+
+            return Ok(new {
+                customers,
+                messages,
+                orders
+            });
+        }
         
     }
 }

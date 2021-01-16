@@ -29,4 +29,8 @@ export class UserServiceService {
   sendMsg(userId:number,message) {
     return this.http.post<Message>("http://localhost:5000/api/user/send/" + userId,message)
   }
+
+  getModelsCounter() {
+    return this.http.get<any>("http://localhost:5000/api/user/customerCounterAndMsg")
+  }
 }

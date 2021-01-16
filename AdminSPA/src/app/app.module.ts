@@ -1,3 +1,4 @@
+import { CounterComponent } from './Users/Users/Counter/Counter.component';
 import { MessageItemComponent } from './Messages/MessageItem/MessageItem.component';
 import { UserServiceService } from 'src/app/Service/UserService.service';
 import { NavbarComponent } from './Navbar/Navbar/Navbar.component';
@@ -22,6 +23,7 @@ import { StoreModule } from '@ngrx/store';
 import { UserEffects } from './Users/store/user.effects';
 import { appreducers } from './app.reducer';
 import { MessagesComponent } from './Messages/Messages.component';
+import { HeaderComponent } from './Header/Header.component';
 
 export const approute: Routes = [
   { path: '', redirectTo: '/users', pathMatch: 'full' },
@@ -44,7 +46,7 @@ export const approute: Routes = [
   {path:'messages', component:MessagesComponent}
 ];
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
     NavbarComponent,
     AboutComponent,
@@ -55,7 +57,9 @@ export const approute: Routes = [
     UserDetailComponent,
     ListViewUsersComponent,
       MessagesComponent,
-      MessageItemComponent
+      MessageItemComponent,
+      CounterComponent,
+      HeaderComponent
    ],
   imports: [
     BrowserModule,

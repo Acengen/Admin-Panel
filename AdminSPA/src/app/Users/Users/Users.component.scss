@@ -1,15 +1,16 @@
 .navbar-my {
-    overflow: hidden;
     padding-top: 20px;
-    padding-bottom: 20px;
+    margin-top: 20px;
+    padding-bottom: 5px;
 
     a {
         margin: 10px;
-        font-size: 20px;
+        font-size: 12px;
+        color: #477CC4;
     }
 
     .isActive {
-        background-color: rgb(13, 113, 226);
+        background-color:#477CC4;
         padding: 10px;
         border-radius: 5px;
         color: white;
@@ -25,6 +26,9 @@
     h3 {
         margin: 20px;
     }
+    width: 80%;
+    float: right;
+    background-color: #eff6fc;
 }
 
 .user-cards {
@@ -43,15 +47,18 @@ form {
     margin-left: 10px;
 
     select {
-        padding:5px 10px;
+        padding:1px 2px;
         border-radius: 5px;
         border-color: rgb(209, 209, 209);
     }
     button {
-        padding: 5px 10px;
+        padding:5px 4px;
         border-radius: 5px;
         margin-left: 10px;
         margin-bottom: 5px;
+        font-size: 12px;
         border: none !important;
+        background-color: #477CC4;
+        color: #eff6fc;
     }
 }

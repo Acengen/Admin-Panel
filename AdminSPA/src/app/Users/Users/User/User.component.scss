@@ -4,7 +4,7 @@
 }
 .card-header {
     position: relative;
-
+    background-color: #477CC4;
     .userdetail {
         position: absolute;
         color: white;
@@ -14,7 +14,14 @@
     }
 }
 
+p,button,a {
+    font-size: 12px;
+}
+
+
+
 .card-bottom {
+    background-color: #477CC4;
     position: relative;
     i {
         position: absolute;

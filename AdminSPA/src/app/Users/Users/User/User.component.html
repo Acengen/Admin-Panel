@@ -1,5 +1,5 @@
-<div class="card" style="width: 300px;height: 300px;">
-  <div class="card-header bg-primary text-light">
+<div class="card" style="width: 200px;height: 100x;">
+  <div class="card-header text-light">
     <p style="margin-bottom: 0;">{{user.name}}</p>
     <a class="userdetail" [routerLink]="['/users',user.id]" [queryParams]="{'detail': user.name}" tooltip="Detail"
     placement="top"><i class="fa fa-external-link" aria-hidden="false"></i></a>
@@ -10,11 +10,10 @@
     </div>
     <div>
       <p style="margin-bottom: 0;">{{user.street}}</p>
-      <a class="text-primary" style="cursor: pointer;">View Orders</a>
+      <a class="text-primary" style="cursor: pointer;">ORDERS</a>
     </div>
   </div>
   <div class="card-bottom">
-    <button [routerLink]="[user.id,'edit']"  class="btn btn-sm btn-primary"><i class="fa fa-edit"></i> update</button>
     <i (click)="deleteReq(index,user.id)" class="fa fa-trash-o text-danger"></i>
   </div>
 </div>

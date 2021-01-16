@@ -1,15 +1,14 @@
-<nav class="navbar navbar-expand navbar-light bg-primary">
-  <img src="../../../assets/Tonev-Windows-7-Windows-7-user.ico" alt="">
-  <span style="font-weight: bold;color: white;font-size: 20px;">Admin Panel</span>
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/users']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Customers</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/messages']" routerLinkActive="active">Messages</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/about']" routerLinkActive="active">About</a>
-    </li>
-  </ul>
-</nav>
+<div class="mynavbar">
+  <div class="adminimg">
+    <img src="../../../assets/unnamed.png" alt="">
+    <p>JOHN DOE</p>
+  </div>
+  <div class="bottom-nav">
+    <a [routerLink]="['/users']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Customers</a>
+    <a [routerLink]="['/messages']" routerLinkActive="active">Messages</a>
+    <a [routerLink]="['/about']" routerLinkActive="active">About</a>
+    <a href="">Terms of use</a>
+    <a href="">Contact</a>
+  </div>
+</div>
+
