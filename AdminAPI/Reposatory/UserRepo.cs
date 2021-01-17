@@ -18,6 +18,13 @@ namespace AdminAPI.Reposatory
 
         }
 
+        public async Task<Message> GetMessage(int id)
+        {
+            var msg = await _context.Messages.FirstOrDefaultAsync(m => m.Id == id);
+
+            return msg;
+        }
+
         public async Task<IEnumerable<Message>> GetMessages()
         {
             var msgs = await _context.Messages.ToListAsync();

@@ -21,4 +21,8 @@ export class MessagesComponent implements OnInit {
     )
   }
 
+  approveMsg(id:number,message:Message) {
+    this.store.dispatch(new fromActions.ApproveMsgStart({id,message}))
+  }
+
 }

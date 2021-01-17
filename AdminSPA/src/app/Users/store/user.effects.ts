@@ -133,6 +133,17 @@ export class UserEffects {
     })
   )
 
+  @Effect()
+  approveMsg = this.actions$.pipe(
+    ofType(fromActions.APPROVE_MSG_START),
+    switchMap((resData:fromActions.ApproveMsgStart) => {
+      return this.http.put<Message>("http://localhost:5000/api/user/approveMsg/" + resData.payload.id,resData.payload.message).pipe(
+        map((res) => {
+          return new fromActions.ApproveMsgSuccess(res)
+        })
+      )
+    })
+  )
   constructor(
     private actions$: Actions,
     private http: HttpClient,

@@ -125,6 +125,18 @@ namespace AdminAPI.Controllers
                 orders
             });
         }
+
+        [HttpPut("approveMsg/{id}")]
+        public async Task<IActionResult> ApproveMessage(int id) {
+            var msg = await _repo.GetMessage(id);
+            if(msg != null) {
+                msg.isApprove = !msg.isApprove;
+            }
+
+            await _context.SaveChangesAsync();
+
+            return Ok(msg);
+        }
         
     }
 }

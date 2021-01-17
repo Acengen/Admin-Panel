@@ -1,6 +1,6 @@
-<div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-  <div class="card-header"><span style="font-style: italic;">id</span>: {{message.userId}}</div>
-  <div class="card-body">
-    <p class="card-text">{{message.text}}</p>
-  </div>
-</div>
+<td>{{message.userId}}</td>
+<td style="cursor: pointer;" (click)="approveMsg(message.id,message)">{{message.text}}</td>
+<td *ngIf="!message.isApprove"><i class="fa fa-remove"></i>
+</td>
+<td *ngIf="message.isApprove"><i class="fa fa-check"></i>
+</td>

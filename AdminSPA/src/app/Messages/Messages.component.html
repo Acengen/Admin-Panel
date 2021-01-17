@@ -1,7 +1,20 @@
-<div class="p-3">
-  <h3>Messages</h3>
-  <p *ngIf="!messages.length" class="text-muted">There is no messages</p>
-  <div class="msgs-grid">
-    <app-MessageItem *ngFor="let msg of messages" [message]="msg"></app-MessageItem>
+<div class="messages">
+  <div class="msg-detail">
+    <h3>Messages</h3>
+    <p *ngIf="!messages.length" class="text-muted">There is no messages</p>
+    <div class="msgs-grid">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">userId</th>
+            <th scope="col">Text</th>
+            <th scope="col">Click to Approve Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr app-MessageItem *ngFor="let msg of messages" [message]="msg"></tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

@@ -89,3 +89,31 @@
         color: rgb(112, 112, 112);
     }
 }
+
+.card-money {
+    display: flex;
+    background-color: rgb(248, 248, 248);
+
+    border: 1px solid rgb(233, 233, 233);
+    justify-content: space-between;
+    padding: 10px;
+    margin-left: 10px;
+    box-shadow: 2px 2px 4px rgb(204, 204, 204);
+
+    .fafa {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        i {
+            color:gray
+        }
+    }
+    h3 {
+        color: #5D8DCB;
+        text-align: right;
+    }
+    p {
+        color: rgb(112, 112, 112);
+    }
+}

@@ -18,6 +18,8 @@ export const ADD_MSG_START = 'ADD_MSG_START';
 export const ADD_MSG_SUCCESS = 'ADD_MSG_SUCCESS';
 export const GET_MSG_START = 'GET_MSG_START';
 export const GET_MSG_SUCCESS = 'GET_MSG_SUCCESS';
+export const APPROVE_MSG_START = 'APPROVE_MSG_START';
+export const APPROVE_MSG_SUCCESS = 'APPROVE_MSG_SUCCESS';
 
 export class AddUser implements Action {
   readonly type = ADD_USER;
@@ -98,6 +100,15 @@ export class AddMsgSuccess implements Action {
 
     constructor(public payload:Message) {}
 }
+export class ApproveMsgStart implements Action {
+  readonly type = APPROVE_MSG_START;
+  constructor(public payload:{message:Message,id:number}){}
+}
+
+export class ApproveMsgSuccess implements Action {
+  readonly type = APPROVE_MSG_SUCCESS;
+  constructor(public payload:Message){}
+}
 
 export type UserActionsTypes =
   | AddUser
@@ -114,4 +125,6 @@ export type UserActionsTypes =
   | GetMsgStart
   | GetMsgSuccess
   | AddMsgStart
-  | AddMsgSuccess;
+  | AddMsgSuccess
+  | ApproveMsgStart 
+  | ApproveMsgSuccess;

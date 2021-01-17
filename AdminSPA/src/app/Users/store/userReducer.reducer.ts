@@ -1,3 +1,4 @@
+import { act } from '@ngrx/effects';
 import { Message } from 'src/app/Interfaces/Message';
 import { User } from '../../Interfaces/User';
 import * as fromActions from '../../Users/store/userActions.actions';
@@ -107,6 +108,26 @@ export function UserReducer(
         msg:[...state.msg,action.payload],
         successMessage:true
       }
+    case fromActions.APPROVE_MSG_START:
+      return {
+        ...state
+      }
+    case fromActions.APPROVE_MSG_SUCCESS:
+      let msgindex = state.msg.findIndex(
+        (item) => item.id == action.payload.id
+      );
+
+      let msgState = [...state.msg];
+      let msgUpdate = {
+        ...action.payload
+      };
+
+      msgState[msgindex] = msgUpdate;
+
+      return {
+        ...state,
+        msg:msgState
+      }
     default:
       return state;
   }
@@ -114,3 +135,4 @@ export function UserReducer(
 
 export const getUsers = (state: State) => state.user;
 export const getIsSuccess = (state:State) => state.successMessage;
+export const getMsgs = (state:State) => state.msg;

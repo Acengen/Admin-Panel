@@ -1,6 +1,16 @@
-.msgs-grid {
-    display: flex;
-    justify-content: left;
-    
-   
+.messages {
+    width: 80%;
+    float: right;
+    background-color: #eff6fc;
+    height: 100vh;
+
+    .msgs-grid {
+        margin: 10px;
+    }
+    .msg-detail {
+        padding-top: 100px;
+        h3 {
+            margin-left: 10px;
+        }
+    }
 }
