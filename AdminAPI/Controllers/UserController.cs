@@ -53,12 +53,6 @@ namespace AdminAPI.Controllers
         }
 
 
-        [HttpGet("products")]
-        public async Task<IActionResult> GetProducts() {
-            var ordersFromRepo = await _repo.GetOrders();
-
-            return Ok(ordersFromRepo);
-        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser(int id) {
@@ -136,6 +130,56 @@ namespace AdminAPI.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(msg);
+        }
+
+// Product- end points
+        [HttpGet("products")]
+        public async Task<IActionResult> GetProducts() {
+            var ordersFromRepo = await _repo.GetOrders();
+
+            return Ok(ordersFromRepo);
+        }
+
+        [HttpGet("product/{id}")]
+        public async Task<IActionResult> GetProduct(int id) {
+            var ordersFromRepo = await _repo.GetOrder(id);
+            if(ordersFromRepo == null) {
+                return BadRequest("No product exist");
+            }
+
+            return Ok(ordersFromRepo);
+        }
+
+        [HttpDelete("productRemove/{id}")]
+        public async Task<IActionResult> DeleteOrder(int id) {
+            var orderFromRepo = await _repo.GetOrder(id);
+            
+            if(orderFromRepo == null){
+                return BadRequest("Order dont exist");
+            }
+
+            _context.Orders.Remove(orderFromRepo);
+            
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+
+        }
+
+        [HttpPut("product/{id}/update")]
+        public async Task<IActionResult> UpdateProduct(OrderToUpdateDto orderToUpdateDto,int id){
+            if(orderToUpdateDto == null) {
+                return BadRequest("Product do not exist");
+            }
+
+            var orderFromRepo = await _repo.GetOrder(id);
+
+            var orderToReturn = _mapper.Map(orderToUpdateDto,orderFromRepo);
+
+            await _context.SaveChangesAsync();
+
+            return Ok(orderToReturn);
+
         }
         
     }

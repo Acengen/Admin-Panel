@@ -32,6 +32,12 @@ namespace AdminAPI.Reposatory
             return msgs;
         }
 
+        public async Task<Order> GetOrder(int id)
+        {
+            var order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == id);
+            return order;
+        }
+
         public async Task<IEnumerable<Order>> GetOrders()
         {
             var orders = await _context.Orders.ToListAsync();

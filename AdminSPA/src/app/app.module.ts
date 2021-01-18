@@ -1,3 +1,5 @@
+import { OrdersUpdateComponent } from './Orders/OrdersUpdate/OrdersUpdate.component';
+import { OrdersItemComponent } from './Orders/OrdersItem/OrdersItem.component';
 import { CounterComponent } from './Users/Users/Counter/Counter.component';
 import { MessageItemComponent } from './Messages/MessageItem/MessageItem.component';
 import { UserServiceService } from 'src/app/Service/UserService.service';
@@ -24,6 +26,8 @@ import { UserEffects } from './Users/store/user.effects';
 import { appreducers } from './app.reducer';
 import { MessagesComponent } from './Messages/Messages.component';
 import { HeaderComponent } from './Header/Header.component';
+import { TermsOfUserComponent } from './TermsOfUser/TermsOfUser.component';
+import { OrdersComponent } from './Orders/Orders.component';
 
 export const approute: Routes = [
   { path: '', redirectTo: '/users', pathMatch: 'full' },
@@ -43,10 +47,14 @@ export const approute: Routes = [
     component: UserDetailComponent
   },
   { path: 'about', component: AboutComponent },
-  {path:'messages', component:MessagesComponent}
+  {path:'messages', component:MessagesComponent},
+  {path:'terms', component:TermsOfUserComponent},
+  {path:'products',component:OrdersComponent, children:[
+    {path:':id', component:OrdersUpdateComponent}
+  ]}
 ];
 @NgModule({
-  declarations: [		
+  declarations: [				
     AppComponent,
     NavbarComponent,
     AboutComponent,
@@ -59,7 +67,11 @@ export const approute: Routes = [
       MessagesComponent,
       MessageItemComponent,
       CounterComponent,
-      HeaderComponent
+      HeaderComponent,
+      TermsOfUserComponent,
+      OrdersComponent,
+      OrdersItemComponent,
+      OrdersUpdateComponent
    ],
   imports: [
     BrowserModule,

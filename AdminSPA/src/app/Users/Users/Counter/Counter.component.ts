@@ -15,7 +15,7 @@ export class CounterComponent implements OnInit {
   OrdersArray:Product[];
   customersCounter:number;
   messagesCounter:number;
-  totalCash:number = 0;
+  totalCash:number;
   constructor(private http:HttpClient,private service:UserServiceService,private store:Store<fromRoot.AppState>) { }
 
   ngOnInit() {
@@ -25,15 +25,15 @@ export class CounterComponent implements OnInit {
       this.OrdersArray = counterModels.orders;
     });
     //store init
-    this.store.select('userList').pipe(map(state => state.user)).subscribe(
-      users => {
-          if(users){
-            for(let key in users){
-              this.totalCash += users[key].productPrice
-            }
-          }
+    this.service.getProducts().subscribe(res => {
+      if(res){
+        let totalsum = 0;
+        for(let key in res){
+          totalsum += res[key].price
+        }
+        this.totalCash = totalsum
       }
-    )
+    })
   }
 
 }

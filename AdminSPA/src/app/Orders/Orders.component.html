@@ -1,0 +1,18 @@
+<div class="product">
+  <h3>Products</h3>
+  <div class="product-cards">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">NAME</th>
+          <th scope="col">PRICE</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr app-OrdersItem *ngFor="let prod of products;let i = index" [product]="prod" [index]="i"></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<router-outlet></router-outlet>

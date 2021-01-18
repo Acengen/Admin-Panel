@@ -1,0 +1,4 @@
+<td>{{product.id}}</td>
+<td [routerLink]="['/products', product.id]" class="nametd">{{product.name}}</td>
+<td>{{product.price | currency:'EUR'}} <i (click)="deleteProduct()" style="color: red;cursor: pointer;" class="fa fa-remove"></i>
+</td>

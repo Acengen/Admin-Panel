@@ -9,6 +9,7 @@ namespace AdminAPI.Reposatory
     {
          Task<IEnumerable<User>> GetUsers(UserParams userParams);
          Task<IEnumerable<Order>> GetOrders();
+         Task<Order> GetOrder(int id);
          Task<User> GetUser(int Id);
        
          Task<IEnumerable<Message>> GetMessages();

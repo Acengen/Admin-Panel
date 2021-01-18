@@ -1,0 +1,8 @@
+.nametd {
+    text-decoration: underline blue;
+}
+.nametd::after {
+    content: "update";
+    color: blue;
+    font-size: 10px;
+}

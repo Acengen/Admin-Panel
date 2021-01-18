@@ -1,0 +1,8 @@
+<div class="orderEdit">
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+      <input class="form-control" type="text" name="name" [(ngModel)]="product.name" required>
+      <input class="form-control" type="number" name="price" [(ngModel)]="product.price" required>
+      <button class="btn btn-light btn-sm" type="submit">Update</button>
+      <button (click)="GoBack()" class="btn btn-primary btn-sm" type="button">Back</button>
+  </form>
+</div>
