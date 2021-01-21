@@ -3,3 +3,13 @@
     padding-right: 0px !important;
     font-family: 'Raleway', sans-serif;
 }
+
+.flexBox {
+    display: flex;
+}
+
+@media only screen and (max-width:660px){
+    .flexBox {
+        display: unset;
+    }
+}

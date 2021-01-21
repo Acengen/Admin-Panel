@@ -1,3 +1,4 @@
+import { ProductResolverService } from './reslovers/productResolver.service';
 import { OrdersUpdateComponent } from './Orders/OrdersUpdate/OrdersUpdate.component';
 import { OrdersItemComponent } from './Orders/OrdersItem/OrdersItem.component';
 import { CounterComponent } from './Users/Users/Counter/Counter.component';
@@ -50,7 +51,7 @@ export const approute: Routes = [
   {path:'messages', component:MessagesComponent},
   {path:'terms', component:TermsOfUserComponent},
   {path:'products',component:OrdersComponent, children:[
-    {path:':id', component:OrdersUpdateComponent}
+    {path:':id', component:OrdersUpdateComponent, resolve:{product:ProductResolverService}}
   ]}
 ];
 @NgModule({

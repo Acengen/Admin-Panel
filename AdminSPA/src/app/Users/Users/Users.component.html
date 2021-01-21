@@ -12,7 +12,7 @@
     </select>
     <button class="btn btn-sm">apply</button>
   </form>
-  <div class="user-cards row" *ngIf="!listView">
+  <div class="user-cards" *ngIf="!listView">
     <app-User *ngFor="let user of users;let i = index" [index]="i" [user]="user"></app-User>
   </div>
   <div class="user-list" *ngIf="listView">
@@ -30,4 +30,7 @@
       </tbody>
     </table>
   </div>
+ 
 </div>
+
+

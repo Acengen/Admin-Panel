@@ -1,10 +1,16 @@
 .card {
     margin-right: 10px;
     margin-bottom: 10px;
+    width: 200px;
+    
+    img {
+        width: 100px;
+    }
 }
 .card-header {
     position: relative;
     background-color: #477CC4;
+   
     .userdetail {
         position: absolute;
         color: white;
@@ -21,8 +27,8 @@ p,button,a {
 
 
 .card-bottom {
-    background-color: #477CC4;
     position: relative;
+   
     i {
         position: absolute;
         bottom: 0;
@@ -31,4 +37,22 @@ p,button,a {
         padding: 5px;
         cursor: pointer;
     }
+    
+}
+
+@media only screen and(max-width:480px){
+    .card {
+        z-index: 1;
+        img {
+            display: none;
+        }
+    }
+}
+@media only screen and (max-width:660px) {
+    .card {
+        width: 100%;
+    }
+}
+@media only screen and(max-width:767px) {
+
 }

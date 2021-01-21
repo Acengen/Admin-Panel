@@ -1,3 +1,26 @@
+$primary-color:#08e0e7;
+$sec-color: #209e30;
+$ter-color:#5D8DCB;
+
+@mixin card-style($col) {
+    display: flex;
+    width: 200px;
+    border: 1px solid rgb(233, 233, 233);
+    background-color: rgb(248, 248, 248);
+    justify-content: space-between;
+    padding: 10px;
+    margin-left: 10px;
+    box-shadow: 2px 2px 4px rgb(204, 204, 204);
+    h3 {
+        color: $col;
+        text-align: right;
+    }
+
+    p {
+        color: rgb(112, 112, 112);
+    }
+}
+
 .adminoverlook {
     padding-top: 100px;
     padding-left: 10px;
@@ -6,16 +29,11 @@
 
 .counter-cards {
     display: flex;
+    flex-wrap: wrap
     
 }
 .card-users {
-    display: flex;
-    border: 1px solid rgb(233, 233, 233);
-    background-color: rgb(248, 248, 248);
-    justify-content: space-between;
-    padding: 10px;
-    margin-left: 10px;
-    box-shadow: 2px 2px 4px rgb(204, 204, 204);
+   @include card-style($primary-color);
 
     .fafa {
         display: flex;
@@ -26,24 +44,12 @@
             color:gray
         }
     }
-    h3 {
-        color: #08e0e7;
-        text-align: right;
-    }
-    p {
-        color: rgb(112, 112, 112);
-    }
+    
+  
 }
 
 .card-msg {
-    display: flex;
-    background-color: rgb(248, 248, 248);
-
-    border: 1px solid rgb(233, 233, 233);
-    justify-content: space-between;
-    padding: 10px;
-    margin-left: 10px;
-    box-shadow: 2px 2px 4px rgb(204, 204, 204);
+    @include card-style($sec-color);
 
     .fafa {
         display: flex;
@@ -54,23 +60,11 @@
             color:gray
         }
     }
-    h3 {
-        color: #209e30;
-        text-align: right;
-    }
-    p {
-        color: rgb(112, 112, 112);
-    }
+    
+   
 }
 .card-like {
-    display: flex;
-    background-color: rgb(248, 248, 248);
-
-    border: 1px solid rgb(233, 233, 233);
-    justify-content: space-between;
-    padding: 10px;
-    margin-left: 10px;
-    box-shadow: 2px 2px 4px rgb(204, 204, 204);
+    @include card-style($ter-color);
 
     .fafa {
         display: flex;
@@ -81,24 +75,12 @@
             color:gray
         }
     }
-    h3 {
-        color: #5D8DCB;
-        text-align: right;
-    }
-    p {
-        color: rgb(112, 112, 112);
-    }
+   
+   
 }
 
 .card-money {
-    display: flex;
-    background-color: rgb(248, 248, 248);
-
-    border: 1px solid rgb(233, 233, 233);
-    justify-content: space-between;
-    padding: 10px;
-    margin-left: 10px;
-    box-shadow: 2px 2px 4px rgb(204, 204, 204);
+    @include card-style($ter-color);
 
     .fafa {
         display: flex;
@@ -109,11 +91,16 @@
             color:gray
         }
     }
-    h3 {
-        color: #5D8DCB;
-        text-align: right;
+   
+   
+}
+
+@media only screen and (max-width:767px) {
+    .counter-cards {
+        flex-direction: column;
+        
     }
-    p {
-        color: rgb(112, 112, 112);
+    .card-like,.card-money,.card-msg,.card-users{
+        width: unset;
     }
 }

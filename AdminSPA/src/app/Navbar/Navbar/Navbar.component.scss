@@ -1,12 +1,7 @@
 
 .mynavbar {
     height: 100%;
-    position: fixed;
-    width: 20%;
-    float: left;
-    left: 0;
-    z-index: -1;
-    padding-right: 10px 2px;
+    width: 200px;
     .adminimg {
         padding: 150px 40px 20px 40px;
         margin-bottom: 5px;
@@ -42,32 +37,37 @@
     border-radius: 2px;
 }
 
-.navbar {
-    padding: 10px;
-    position: relative;
-    img {
-        width: 100px;
-        position: absolute;
-        left: 50%;
-        
-        transform: translate(-50%,10px);
+.fa {
+    display: none;
+    position: fixed;
+    top: 20%;
+    z-index: 99999999;
+    background-color: #5D8DCB;
+    padding: 13px;
+    color: #eff6fc;
+    font-size: 24px;
+}
+
+
+@media only screen and (max-width:500px) {
+    .fa {
+        display: block;
+    }
+    
+    .mynavbar {
+        width: 100%;
+        background-color: #eff6fc;
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 999;
+    }
+
+    .closenav {
+        display: none;
     }
 }
 
-@media (max-width: 700px) {
-    .navbar {
-        img {
-            
-            display: none;
-        }
-    }
-}
 
-@media (max-width: 800px) {
-    .navbar {
-        img {
-           left: unset;
-           right: 0;
-        }
-    }
-}

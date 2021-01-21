@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/Service/UserService.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { User } from 'src/app/Interfaces/User';
@@ -16,7 +17,7 @@ export class UserComponent implements OnInit {
   @Input() user:User;
   @Input() index:number;
   iconsimg = "";
-  constructor(private service:UserServiceService,private store:Store<fromRoot.AppState>) { }
+  constructor(private service:UserServiceService,private store:Store<fromRoot.AppState>,private router:Router) { }
 
   ngOnInit() {
     if(this.user.gender === 'male') {
@@ -29,5 +30,7 @@ export class UserComponent implements OnInit {
   deleteReq(index,id) {
       this.store.dispatch(new fromActions.DeleteUser({index:index,id:id}))
   }
+
+  
 
 }

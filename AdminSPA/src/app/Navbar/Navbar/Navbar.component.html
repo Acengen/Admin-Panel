@@ -1,4 +1,6 @@
-<div class="mynavbar">
+<i class="fa fa-angle-right" (click)="openNav()"></i>
+<i *ngIf="isActiveNav" class="fa fa-remove" (click)="openNav()"></i>
+<div class="mynavbar closenav" [ngClass]="{'closenav': !isActiveNav}">
   <div class="adminimg">
     <img src="../../../assets/unnamed.png" alt="">
     <p>JOHN DOE</p>

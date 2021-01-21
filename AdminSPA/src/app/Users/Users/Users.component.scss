@@ -1,16 +1,19 @@
+$primary-color:#477CC4;
+$primary-margin: 10px;
+
 .navbar-my {
     padding-top: 20px;
     margin-top: 20px;
     padding-bottom: 5px;
 
     a {
-        margin: 10px;
+        margin: $primary-margin;
         font-size: 12px;
-        color: #477CC4;
+        color: $primary-color;
     }
 
     .isActive {
-        background-color:#477CC4;
+        background-color:$primary-color;
         padding: 10px;
         border-radius: 5px;
         color: white;
@@ -26,17 +29,18 @@
     h3 {
         margin: 20px;
     }
-    width: 80%;
-    float: right;
     background-color: #eff6fc;
 }
 
 .user-cards {
-    margin: 10px;
+    margin: $primary-margin;
+    display: flex;
+  
+    flex-wrap: wrap;
 }
 
 .user-list {
-    margin: 10px;
+    margin: $primary-margin;
     padding: 20px;
 }
 
@@ -58,7 +62,21 @@ form {
         margin-bottom: 5px;
         font-size: 12px;
         border: none !important;
-        background-color: #477CC4;
+        background-color: $primary-color;
         color: #eff6fc;
+    }
+}
+
+
+@media only screen and (max-width:660px) {
+    
+    .user-cards {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .items {
+        flex-direction: column-reverse;
     }
 }
