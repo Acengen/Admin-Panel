@@ -4,12 +4,10 @@
     font-family: 'Raleway', sans-serif;
 }
 
-.flexBox {
-    display: flex;
-}
 
-@media only screen and (max-width:660px){
+
+@media only screen and (max-width:767px){
     .flexBox {
-        display: unset;
+        display: block;
     }
 }

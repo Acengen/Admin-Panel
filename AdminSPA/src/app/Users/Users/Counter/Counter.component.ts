@@ -25,11 +25,11 @@ export class CounterComponent implements OnInit {
       this.OrdersArray = counterModels.orders;
     });
     //store init
-    this.service.getProducts().subscribe(res => {
-      if(res){
+    this.store.select('userList').pipe(map(state => state.user)).subscribe(user =>{
+      if(user){
         let totalsum = 0;
-        for(let key in res){
-          totalsum += res[key].price
+        for(let key in user){
+          totalsum += user[key].productPrice
         }
         this.totalCash = totalsum
       }

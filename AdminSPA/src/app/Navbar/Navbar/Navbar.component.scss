@@ -1,7 +1,10 @@
 
 .mynavbar {
-    height: 100%;
     width: 200px;
+    position: fixed;
+    left: 0;
+    height: 100%;
+    background-color: #eff6fc;
     .adminimg {
         padding: 150px 40px 20px 40px;
         margin-bottom: 5px;
@@ -49,7 +52,7 @@
 }
 
 
-@media only screen and (max-width:500px) {
+@media only screen and (max-width:767px) {
     .fa {
         display: block;
     }

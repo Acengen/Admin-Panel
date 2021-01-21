@@ -1,14 +1,19 @@
 .terms {
-    width: 80%;
-    float: right;
-    background-color: #eff6fc;
-    height: 100vh;
+padding-left: 200px;
+  h3 {
+    padding-top: 100px;
+    margin-left: 20px;
+  }
+  p {
+    max-width: 600px;
+    margin-left: 20px;
+  }
+  @media(max-width:767px) {
+    padding-left: 0px;
     h3 {
-        padding-top: 100px;
-        margin-left: 20px;
-    }
-    p {
-        max-width: 600px;
-        margin-left: 20px;
+        padding-top: 200px;
     }
 }
+}
+
+

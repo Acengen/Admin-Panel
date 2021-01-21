@@ -4,7 +4,7 @@
     <a [ngClass]="{'isActive': !listView}" (click)="listView = false">Customer Detail</a>
     <a [ngClass]="{'isActive': listView}" (click)="listView=true"><i class="fa fa-align-left"></i> Customer Order</a>
   </div>
-  <div *ngIf="!listView || user" class="user-detail">
+  <div *ngIf="!listView" class="user-detail">
     <img src="{{iconsimg}}" alt="">
     <div class="text-detail">
       <p>{{user.name}}</p>
@@ -19,7 +19,7 @@
   </div>
   <p class="msgSuccess" *ngIf="successSendMessage">Sending...</p>
   <div *ngIf="messageActive" class="messageing">
-    <p class="text-muted" style="font-size: 12px;margin-bottom: 0;margin-left: 10px;margin-top: 10px;">SEND USE A
+    <p class="text-muted" style="font-size: 12px;margin-bottom: 0;margin-left: 10px;margin-top: 10px;">SEND USER A
       MESSAGE <i class="fa fa-hand-o-down"></i>
     </p>
     <form (ngSubmit)="SendMsg(form)" #form="ngForm">
@@ -28,7 +28,7 @@
     </form>
   </div>
   <div *ngIf="listView" class="user-orders">
-    <h3>Orders from {{user.name}}</h3>
+    <h2>Orders from {{user.name}}</h2>
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{user.productName}}</h5>
@@ -36,7 +36,7 @@
       </div>
     </div>
     <div class="productTotal">
-      <p>${{user.productPrice}}</p>
+      <p>Total: ${{user.productPrice}}</p>
     </div>
   </div>
 </div>

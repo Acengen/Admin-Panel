@@ -26,10 +26,17 @@ $primary-margin: 10px;
 }
 
 .users {
+    padding-left: 200px;
     h3 {
         margin: 20px;
     }
     background-color: #eff6fc;
+
+    @media only screen and(max-width:767px) {
+        padding-left: 0px;
+
+      
+    }
 }
 
 .user-cards {
@@ -68,14 +75,11 @@ form {
 }
 
 
-@media only screen and (max-width:660px) {
+@media only screen and (max-width:767px) {
     
     .user-cards {
         flex-direction: column;
     }
-}
-
-@media only screen and (max-width:767px) {
     .items {
         flex-direction: column-reverse;
     }

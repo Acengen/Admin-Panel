@@ -1,12 +1,16 @@
 .about {
-    background-color: #eff6fc;
-    height: 100vh;
-    width: 80%;
-    float: right;
+    padding-left: 200px;
     .about-header {
         margin-left: 20px;
     }
     h3 {
         padding-top: 100px;
+    }
+
+    @media(max-width:767px) {
+        padding-left: 0px;
+        h3 {
+            padding-top: 200px;
+        }
     }
 }

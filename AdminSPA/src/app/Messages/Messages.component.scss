@@ -1,16 +1,24 @@
 .messages {
-    width: 80%;
-    float: right;
-    background-color: #eff6fc;
-    height: 100vh;
-
+    padding-left: 200px;
     .msgs-grid {
         margin: 10px;
+        padding: 20px;
+       
     }
     .msg-detail {
         padding-top: 100px;
         h3 {
             margin-left: 10px;
         }
+    }
+
+    @media only screen and(max-width:767px) {
+        padding-left: 0px;
+        .msg-detail {
+            padding-top: 200px;
+        }
+    }
+    @media only screen and(max-width:487px) {
+        
     }
 }
