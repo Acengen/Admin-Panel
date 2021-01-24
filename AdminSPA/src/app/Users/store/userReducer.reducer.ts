@@ -1,4 +1,3 @@
-import { act } from '@ngrx/effects';
 import { Message } from 'src/app/Interfaces/Message';
 import { User } from '../../Interfaces/User';
 import * as fromActions from '../../Users/store/userActions.actions';
@@ -7,12 +6,14 @@ export interface State {
   user: User[];
   msg:Message[];
   successMessage:boolean;
+  errorMsg:string;
 }
 
 const initialState: State = {
   user: [],
   msg: [],
-  successMessage:false
+  successMessage:false,
+  errorMsg:null
 };
 
 export function UserReducer(
@@ -32,12 +33,19 @@ export function UserReducer(
     case fromActions.ADD_USER:
       return {
         ...state,
+        errorMsg:null
       };
     case fromActions.ADD_USER_SUCCESS:
       return {
         ...state,
         user: [...state.user, action.payload],
+        errorMsg:null
       };
+    case fromActions.ADD_USER_FAIL:
+      return {
+        ...state,
+        errorMsg:action.payload
+      }
     case fromActions.DELETE_SINGLE_USER:
       let user = state.user.find(v => v.id === action.payload)
       return {

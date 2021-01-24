@@ -4,5 +4,6 @@ namespace AdminAPI.Helper
     {
         public string gender { get; set; }
         public string Order { get; set; }
+        public string name {get;set;}
     }
 }

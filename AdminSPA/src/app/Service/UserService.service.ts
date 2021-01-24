@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Product } from '../Interfaces/Product';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';

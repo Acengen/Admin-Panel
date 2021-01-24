@@ -37,6 +37,9 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.store.dispatch(new fromActions.GetUsersGender(f.value));
   }
 
+  filterUsers(e) {
+    console.log(e)
+  }
   ngOnDestroy() {
     this.usersSub.unsubscribe();
   }

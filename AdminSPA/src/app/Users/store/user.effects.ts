@@ -3,10 +3,11 @@ import { UserServiceService } from 'src/app/Service/UserService.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { User } from 'src/app/Interfaces/User';
 import * as fromActions from './userActions.actions';
 import { Message } from 'src/app/Interfaces/Message';
+import { of } from 'rxjs';
 
 @Injectable()
 export class UserEffects {
@@ -16,6 +17,7 @@ export class UserEffects {
     switchMap(() => {
       return this.http.get<User[]>('http://localhost:5000/api/user').pipe(
         map((users) => {
+        
           return new fromActions.GetUsers(users);
         })
       );
@@ -103,6 +105,8 @@ export class UserEffects {
         .pipe(
           map((res) => {
             return new fromActions.AddUserSuccess(res);
+          }),catchError(error => {
+            return of(new fromActions.AddUserFail(error))
           })
         );
     })
@@ -144,6 +148,15 @@ export class UserEffects {
       )
     })
   )
+
+  @Effect({dispatch:false})
+  successfulUserAdded = this.actions$.pipe(
+    ofType(fromActions.ADD_USER_SUCCESS),
+    tap(()=>{
+      this.route.navigate(['/users'])
+    })
+  )
+
   constructor(
     private actions$: Actions,
     private http: HttpClient,

@@ -60,6 +60,14 @@ namespace AdminAPI.Reposatory
                 var ord = _context.Users.Where(u => u.Gender == userParams.gender);
                 return ord;
             }
+            //filtering users by name if they contain any char
+            if(userParams.name != null) {
+                var usertoret = _context.Users.Where(u => u.Name.Contains(userParams.name));
+
+                return usertoret;
+            }
+
+            
 
             return users;
         }

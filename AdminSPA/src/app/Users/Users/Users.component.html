@@ -12,6 +12,7 @@
     </select>
     <button class="btn btn-sm">apply</button>
   </form>
+  <input placeholder="search.." type="text" (change)="filterUsers($event.target)">
   <div class="user-cards" *ngIf="!listView">
     <app-User *ngFor="let user of users;let i = index" [index]="i" [user]="user"></app-User>
   </div>
@@ -30,7 +31,4 @@
       </tbody>
     </table>
   </div>
- 
 </div>
-
-
