@@ -1,6 +1,6 @@
 import { map } from 'rxjs/operators';
 import { User } from 'src/app/Interfaces/User';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Product } from 'src/app/Interfaces/Product';
 import { UserServiceService } from 'src/app/Service/UserService.service';
@@ -20,6 +20,7 @@ export class UserAddComponent implements OnInit {
   defaultProduct: string = 'Razor Shave';
   defaultGender: string = 'male';
   succefullResponMsg: string;
+
   constructor(
     private service: UserServiceService,
     private store: Store<fromRoot.AppState>
@@ -39,4 +40,7 @@ export class UserAddComponent implements OnInit {
       })
     );
   }
+
+  
+  
 }

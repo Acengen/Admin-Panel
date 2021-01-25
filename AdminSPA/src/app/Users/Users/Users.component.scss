@@ -10,6 +10,7 @@ $primary-margin: 10px;
         margin: $primary-margin;
         font-size: 12px;
         color: $primary-color;
+        cursor: pointer;
     }
 
     .isActive {
@@ -50,27 +51,29 @@ $primary-margin: 10px;
     margin: $primary-margin;
     padding: 20px;
 }
-
-form {
-    max-width: 200px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-
-    select {
-        padding:1px 2px;
-        border-radius: 5px;
-        border-color: rgb(209, 209, 209);
-    }
-    button {
-        padding:5px 4px;
-        border-radius: 5px;
+.filteringForms {
+    display: flex;
+    form {
+        max-width: 200px;
+        margin-top: 20px;
+        margin-bottom: 10px;
         margin-left: 10px;
-        margin-bottom: 5px;
-        font-size: 12px;
-        border: none !important;
-        background-color: $primary-color;
-        color: #eff6fc;
+        display: flex;
+        select {
+            
+            border-radius: 5px;
+            border-color: rgb(209, 209, 209);
+        }
+        button {
+            padding:5px 4px;
+            border-radius: 5px;
+            margin-left: 10px;
+            margin-bottom: 5px;
+            font-size: 16px;
+            border: none !important;
+            background-color: $primary-color;
+            color: #eff6fc;
+        }
     }
 }
 

@@ -134,8 +134,8 @@ namespace AdminAPI.Controllers
 
 // Product- end points
         [HttpGet("products")]
-        public async Task<IActionResult> GetProducts() {
-            var ordersFromRepo = await _repo.GetOrders();
+        public async Task<IActionResult> GetProducts([FromQuery] UserParams userParams) {
+            var ordersFromRepo = await _repo.GetOrders(userParams);
 
             return Ok(ordersFromRepo);
         }
@@ -148,6 +148,20 @@ namespace AdminAPI.Controllers
             }
 
             return Ok(ordersFromRepo);
+        }
+
+        [HttpPost("product/add")]
+        public async Task<IActionResult> AddProduct(OrderDTo orderDTo) {
+            var orderToAdd = _mapper.Map<Order>(orderDTo);
+            if(orderDTo == null){
+                return BadRequest("There is no order to add");
+            }
+            if(orderDTo.Price > 40) {
+                orderToAdd.Discount = true;
+            }
+            await _context.Orders.AddAsync(orderToAdd);
+            await _context.SaveChangesAsync();
+            return Ok(orderToAdd);
         }
 
         [HttpDelete("productRemove/{id}")]

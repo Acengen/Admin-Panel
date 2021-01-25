@@ -1,18 +1,23 @@
 <div class="users">
   <app-Counter></app-Counter>
   <router-outlet></router-outlet>
-  <div class="navbar-my text-primary" style="cursor: pointer;">
+  <div class="navbar-my text-primary">
     <a [ngClass]="{'isActive': !listView}" (click)="listView = false">Card View</a>
     <a [ngClass]="{'isActive': listView}" (click)="listView=true"><i class="fa fa-align-left"></i> List View</a>
     <a [routerLink]="['add']" routerLinkActive="router-link-active"><i class="fa fa-plus"></i> New customer</a>
   </div>
-  <form #f="ngForm" (ngSubmit)="loadUsersByGender(f)">
-    <select name="gender" [(ngModel)]="defaultgender">
-      <option *ngFor="let g of genders" [value]="g.name">{{g.name}}</option>
-    </select>
-    <button class="btn btn-sm">apply</button>
-  </form>
-  <input placeholder="search.." type="text" (change)="filterUsers($event.target)">
+  <div class="filteringForms">
+    <form #f="ngForm" (ngSubmit)="loadUsersByGender(f)">
+      <select class="form-control" name="gender" [(ngModel)]="defaultgender">
+        <option *ngFor="let g of genders" [value]="g.name">{{g.name}}</option>
+      </select>
+      <button class="btn btn-sm">apply</button>
+    </form>
+    <form (ngSubmit)="loaduserbyname(form)" #form="ngForm">
+      <input class="form-control" type="text" name="name" placeholder="Search.." ngModel required>
+      <button type="submit">apply</button>
+    </form>
+  </div>
   <div class="user-cards" *ngIf="!listView">
     <app-User *ngFor="let user of users;let i = index" [index]="i" [user]="user"></app-User>
   </div>

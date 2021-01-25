@@ -14,7 +14,8 @@ export class UserEffects {
   @Effect()
   usersGet = this.actions$.pipe(
     ofType(fromActions.GET_USERS_START),
-    switchMap(() => {
+    switchMap((resdata:fromActions.GetUsersStart) => {
+     
       return this.http.get<User[]>('http://localhost:5000/api/user').pipe(
         map((users) => {
         
@@ -56,6 +57,26 @@ export class UserEffects {
         );
     })
   );
+
+
+  @Effect()
+  userName = this.actions$.pipe(
+    ofType(fromActions.GET_USERS_NAME),
+    switchMap((resData: fromActions.GetUsersName) => {
+      let params = new HttpParams();
+      if (resData.payload.name !== null) {
+        params = params.append('name', resData.payload.name);
+      }
+      return this.http
+        .get<any>('http://localhost:5000/api/user', { params: params })
+        .pipe(
+          map((users) => {
+            return new fromActions.GetUsers(users);
+          })
+        );
+    })
+  );
+
 
   @Effect()
   userDelete = this.actions$.pipe(

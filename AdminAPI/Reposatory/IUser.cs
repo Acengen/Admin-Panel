@@ -8,7 +8,7 @@ namespace AdminAPI.Reposatory
     public interface IUser
     {
          Task<IEnumerable<User>> GetUsers(UserParams userParams);
-         Task<IEnumerable<Order>> GetOrders();
+         Task<IEnumerable<Order>> GetOrders(UserParams userParams);
          Task<Order> GetOrder(int id);
          Task<User> GetUser(int Id);
        

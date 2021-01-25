@@ -36,4 +36,14 @@ export class OrdersServiceService {
       }
     )
   }
+
+  addProduct(product:Product){
+    this.http.post<Product>("http://localhost:5000/api/user/product/add",product, {
+      headers: {
+        header:'Allow-Origin*'
+      }
+    }).subscribe(resData => {
+        this.products.push(resData)
+    })
+  }
 }

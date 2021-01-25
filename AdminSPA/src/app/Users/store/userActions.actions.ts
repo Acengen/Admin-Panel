@@ -18,7 +18,8 @@ export const UPDATE_USER_START = 'UPDATE_USER_START';
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 
 export const GET_USERS_GENDER = 'GET_USERS_GENDER';
-export const GET_USERS_GENDER_START = 'GET_USERS_GENDER_START';
+
+export const GET_USERS_NAME = 'GET_USERS_NAME';
 
 export const ADD_MSG_START = 'ADD_MSG_START';
 export const ADD_MSG_SUCCESS = 'ADD_MSG_SUCCESS';
@@ -61,6 +62,12 @@ export class GetUsersGender implements Action {
   readonly type = GET_USERS_GENDER;
 
   constructor(public payload: { gender: string }) {}
+}
+
+export class GetUsersName implements Action {
+  readonly type = GET_USERS_NAME;
+  constructor(public payload: { name: string }) {}
+
 }
 
 export class DeleteSingleUser implements Action {
@@ -136,6 +143,7 @@ export type UserActionsTypes =
   | GetUsersStart
   | UpdateUserStart
   | GetUsersGender
+  | GetUsersName
   | DeleteUserSuccess
   | GetMsgStart
   | GetMsgSuccess

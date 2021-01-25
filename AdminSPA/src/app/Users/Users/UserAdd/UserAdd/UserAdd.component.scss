@@ -31,4 +31,23 @@
             margin-top: 5px;
         }
     }
+
+    .product_buy {
+        p {
+            margin-top: 5px;
+            margin-bottom: 0px !important;
+        }
+        .list_products {
+            height: 100px;
+            overflow-y: scroll;
+            background-color: white;
+            padding: 10px;
+            label {
+                display: block;
+                
+                input {float: right}
+            }
+        }
+        
+    }
 }

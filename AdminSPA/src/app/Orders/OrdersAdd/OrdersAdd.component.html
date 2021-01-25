@@ -1,0 +1,8 @@
+<div class="orderAdd">
+  <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+      <input class="form-control" type="text" name="name" placeholder="product name" ngModel required>
+      <input class="form-control" type="number" name="price" placeholder="product price" ngModel required>
+      <button class="btn btn-light btn-sm" type="submit">Add</button>
+      <button (click)="GoBack()" class="btn btn-primary btn-sm" type="button">Back</button>
+  </form>
+</div>

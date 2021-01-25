@@ -95,6 +95,14 @@ export function UserReducer(
         ...state,
         user: newState,
       };
+    case fromActions.GET_USERS_NAME:
+      let nameState = state.user.filter(v => {
+        return v.name.includes(action.payload.name)
+      });
+      return {
+        ...state,
+        user:nameState
+      }
     case fromActions.GET_MSG_START:
       return {
         ...state

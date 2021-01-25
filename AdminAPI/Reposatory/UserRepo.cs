@@ -38,10 +38,15 @@ namespace AdminAPI.Reposatory
             return order;
         }
 
-        public async Task<IEnumerable<Order>> GetOrders()
+        public async Task<IEnumerable<Order>> GetOrders(UserParams userParams)
         {
             var orders = await _context.Orders.ToListAsync();
             
+            if(userParams.discount) {
+                var ordersWithDiscount = _context.Orders.Where(o => o.Price > 40);
+                return ordersWithDiscount;
+            }
+
             return orders;
         }
 
@@ -63,12 +68,8 @@ namespace AdminAPI.Reposatory
             //filtering users by name if they contain any char
             if(userParams.name != null) {
                 var usertoret = _context.Users.Where(u => u.Name.Contains(userParams.name));
-
                 return usertoret;
             }
-
-            
-
             return users;
         }
 
