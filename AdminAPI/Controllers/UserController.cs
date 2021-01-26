@@ -159,6 +159,10 @@ namespace AdminAPI.Controllers
             if(orderDTo.Price > 40) {
                 orderToAdd.Discount = true;
             }
+            if(orderToAdd.Discount) {
+                var dicountPrice = orderDTo.Price * 0.1;
+                orderToAdd.Price = (int)((double)orderToAdd.Price - dicountPrice);
+            }
             await _context.Orders.AddAsync(orderToAdd);
             await _context.SaveChangesAsync();
             return Ok(orderToAdd);
