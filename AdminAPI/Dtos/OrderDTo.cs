@@ -13,5 +13,8 @@ namespace AdminAPI.Dtos
 
         public bool Discount {get;set;}
 
+        public int DiscountPrice{get;set;}
+
+
     }
 }

@@ -7,5 +7,8 @@ namespace AdminAPI.Helper
         public string name {get;set;}
 
         public bool discount {get;set;}
+
+
+        
     }
 }

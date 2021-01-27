@@ -14,5 +14,6 @@ namespace AdminAPI.Reposatory
        
          Task<IEnumerable<Message>> GetMessages();
          Task<Message> GetMessage(int id);
+
     }
 }

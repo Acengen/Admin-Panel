@@ -1,8 +1,16 @@
 .nametd {
-    text-decoration: underline blue;
+  text-decoration: underline blue;
 }
 .nametd::after {
-    content: "update";
-    color: blue;
-    font-size: 10px;
+  content: "update";
+  color: blue;
+  font-size: 10px;
+}
+
+.discount_span_td {
+  
+  .original_price {
+    text-decoration: red line-through;
+    color: red;
+  }
 }

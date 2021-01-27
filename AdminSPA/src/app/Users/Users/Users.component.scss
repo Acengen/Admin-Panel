@@ -1,9 +1,15 @@
 $primary-color:#477CC4;
 $primary-margin: 10px;
+$margin-top:20px;
+
+@mixin styles {
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
 
 .navbar-my {
     padding-top: 20px;
-    margin-top: 20px;
+    margin-top: $margin-top;
     padding-bottom: 5px;
 
     a {
@@ -55,9 +61,8 @@ $primary-margin: 10px;
     display: flex;
     form {
         max-width: 200px;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        margin-left: 10px;
+        margin-top: $margin-top;
+        @include styles();
         display: flex;
         select {
             
@@ -67,12 +72,17 @@ $primary-margin: 10px;
         button {
             padding:5px 4px;
             border-radius: 5px;
-            margin-left: 10px;
-            margin-bottom: 5px;
+            @include styles();
             font-size: 16px;
             border: none !important;
             background-color: $primary-color;
             color: #eff6fc;
+        }
+        input {
+            transition: 0.3s;
+            &:focus {
+                width: 500px;
+            }
         }
     }
 }

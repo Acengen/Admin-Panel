@@ -10,9 +10,11 @@ import { Product } from 'src/app/Interfaces/Product';
 export class OrdersItemComponent implements OnInit {
   @Input() product:Product;
   @Input() index:number;
+  originalPrice:number;
   constructor(private orderService:OrdersServiceService) { }
 
   ngOnInit() {
+    this.originalPrice = this.product.price + this.product.discountPrice;
   }
 
   deleteProduct() {

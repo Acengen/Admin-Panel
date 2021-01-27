@@ -2,5 +2,6 @@ export interface Product {
     id?:number,
     name:string,
     price:number,
-    discount?:boolean
+    discount?:boolean,
+    discountPrice:number
 }
