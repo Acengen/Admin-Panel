@@ -1,3 +1,4 @@
+import { UserModule } from './Users/Users/users.module';
 import { OrdersAddComponent } from './Orders/OrdersAdd/OrdersAdd.component';
 import { ProductResolverService } from './reslovers/productResolver.service';
 import { OrdersUpdateComponent } from './Orders/OrdersUpdate/OrdersUpdate.component';
@@ -14,7 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AboutComponent } from './About/About.component';
 import { UserAddComponent } from './Users/Users/UserAdd/UserAdd/UserAdd.component';
 import { UserDetailComponent } from './Users/Users/UserDetail/UserDetail.component';
@@ -32,60 +33,40 @@ import { TermsOfUserComponent } from './TermsOfUser/TermsOfUser.component';
 import { OrdersComponent } from './Orders/Orders.component';
 
 export const approute: Routes = [
-  { path: '', redirectTo: '/users', pathMatch: 'full' },
-  {
-    path: 'users',
-    component: UsersComponent,
-    children: [
-      {
-        path: ':id/edit',
-        component: UserEditComponent,
-      },
-      { path: 'add', component: UserAddComponent },
-    ],
-  },
-  {
-    path: 'users/:id',
-    component: UserDetailComponent
-  },
+  { path: '', redirectTo: '/messages', pathMatch: 'full' },
   { path: 'about', component: AboutComponent },
   {path:'messages', component:MessagesComponent},
   {path:'terms', component:TermsOfUserComponent},
   {path:'products',component:OrdersComponent, children:[
     {path:'add', component:OrdersAddComponent},
     {path:':id', component:OrdersUpdateComponent, resolve:{product:ProductResolverService}},
-  ]}
+  ]},
 ];
 @NgModule({
   declarations: [				
     AppComponent,
     NavbarComponent,
     AboutComponent,
-    UserComponent,
-    UsersComponent,
-    UserEditComponent,
-    UserAddComponent,
-    UserDetailComponent,
-    ListViewUsersComponent,
       MessagesComponent,
       MessageItemComponent,
-      CounterComponent,
       HeaderComponent,
       TermsOfUserComponent,
       OrdersComponent,
       OrdersItemComponent,
       OrdersUpdateComponent,
-      OrdersAddComponent
+      OrdersAddComponent,
    ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(approute),
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     EffectsModule.forRoot([UserEffects]),
     StoreModule.forRoot(appreducers),
     TooltipModule.forRoot(),
+    UserModule
   ],
   providers: [UserServiceService],
   bootstrap: [AppComponent],

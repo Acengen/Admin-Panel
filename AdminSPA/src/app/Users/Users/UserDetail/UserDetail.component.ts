@@ -5,8 +5,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
-import * as fromRoot from '../../../app.reducer'
-import * as fromActions from '../../store/userActions.actions'
+import * as fromRoot from '../../../app.reducer';
+import * as fromUserReducer from '../user.reducer';
+import * as fromActions from '../../Users/user.actions';
+import * as fromMsgActions from '../../store/userActions.actions';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -23,15 +25,15 @@ export class UserDetailComponent implements OnInit {
   successSendMessage:boolean;
   userIndex;
 
-  constructor(private router:ActivatedRoute, private service:UserServiceService,private store:Store<fromRoot.AppState>,private route:Router) { }
+  constructor(private router:ActivatedRoute, private service:UserServiceService,private store:Store<fromRoot.AppState>,private userStore:Store<fromUserReducer.State>,private route:Router) { }
 
   ngOnInit() {
    
     this.router.params.subscribe(
       (param:Params) => {
         this.userId = +param['id']
-        this.store.select('userList').pipe(map(resState => {
-          return resState.user.find((v,index) => {
+        this.store.select(fromUserReducer.getUsers).pipe(map(resState => {
+          return resState.find((v,index) => {
              this.userIndex = index;
              return v.id === this.userId 
           })
@@ -62,7 +64,7 @@ export class UserDetailComponent implements OnInit {
     }
 
     SendMsg(f:NgForm) {
-      this.store.dispatch(new fromActions.AddMsgStart({userId:this.userId,msg:f.value}))
+      this.store.dispatch(new fromMsgActions.AddMsgStart({userId:this.userId,msg:f.value}))
       f.reset();
       this.messageActive = false;
     }

@@ -15,6 +15,11 @@
     <select class="form-control" name="productName" [(ngModel)]="defaultProduct">
       <option *ngFor="let prod of products" [value]="prod.name">{{prod.name}} ---- ${{prod.price}}</option>
     </select>
+    <!-- <div class="productsList">
+      <label *ngFor="let prod of products"> {{prod.name}}
+        <input name="productName" [value]="prod.name" type="radio" ngModel>
+      </label>
+    </div> -->
     <button class="btn btn-primary" type="submit">Add</button>
   </form>  
 </div>

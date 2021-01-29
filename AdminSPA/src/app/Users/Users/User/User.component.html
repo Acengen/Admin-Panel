@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="card-bottom">
-    <button [routerLink]="[user.id,'edit']" routerLinkActive="router-link-active"  class="btn btn-sm">Update</button>
+    <button [routerLink]="['/users',user.id,'edit']" routerLinkActive="router-link-active"  class="btn btn-sm">Update</button>
     <i (click)="deleteReq(index,user.id)" class="fa fa-trash-o text-danger"></i>
   </div>
 </div>

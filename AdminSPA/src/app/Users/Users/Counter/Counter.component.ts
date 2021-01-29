@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/Interfaces/Product';
 import { Store } from '@ngrx/store';
-import * as fromRoot from '../../../app.reducer';
+import * as fromUserReducer from '../user.reducer';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -16,7 +16,7 @@ export class CounterComponent implements OnInit {
   customersCounter:number;
   messagesCounter:number;
   totalCash:number;
-  constructor(private http:HttpClient,private service:UserServiceService,private store:Store<fromRoot.AppState>) { }
+  constructor(private http:HttpClient,private service:UserServiceService,private store:Store<fromUserReducer.State>) { }
 
   ngOnInit() {
     this.service.getModelsCounter().subscribe(counterModels => {
@@ -25,7 +25,7 @@ export class CounterComponent implements OnInit {
       this.OrdersArray = counterModels.orders;
     });
     //store init
-    this.store.select('userList').pipe(map(state => state.user)).subscribe(user =>{
+    this.store.select(fromUserReducer.getUsers).pipe(map(state => state)).subscribe(user =>{
       if(user){
         let totalsum = 0;
         for(let key in user){

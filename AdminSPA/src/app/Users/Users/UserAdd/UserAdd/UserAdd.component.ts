@@ -6,7 +6,7 @@ import { Product } from 'src/app/Interfaces/Product';
 import { UserServiceService } from 'src/app/Service/UserService.service';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../../../app.reducer';
-import * as fromActions from '../../../store/userActions.actions';
+import * as fromActions from '../../user.actions'
 
 @Component({
   selector: 'app-UserAdd',

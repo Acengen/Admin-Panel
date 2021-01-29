@@ -194,6 +194,7 @@ namespace AdminAPI.Controllers
             {
                 return BadRequest("Order dont exist");
             }
+            
 
             _context.Orders.Remove(orderFromRepo);
 
@@ -209,6 +210,18 @@ namespace AdminAPI.Controllers
             if (orderToUpdateDto == null)
             {
                 return BadRequest("Product do not exist");
+            }
+            
+            if(orderToUpdateDto.Price > 40) {
+                orderToUpdateDto.Discount = true;
+            }
+
+
+            if (orderToUpdateDto.Discount)
+            {
+                var dicountPrice = orderToUpdateDto.Price * 0.1;
+                orderToUpdateDto.Price = (int)((double)orderToUpdateDto.Price - dicountPrice);
+                orderToUpdateDto.DiscountPrice = (int)dicountPrice;
             }
 
             var orderFromRepo = await _repo.GetOrder(id);
